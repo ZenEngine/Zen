@@ -1,0 +1,14 @@
+root = true
+
+[*]
+trim_trailing_whitespace = true
+
+[*.{cpp,hpp,h,inl,ixx}]
+charset = utf-8
+indent_style = space
+indent_size = 4
+cpp_generate_documentation_comments = doxygen_slash_star
+
+[*.yml]
+indent_style = space
+indent_size = 2
