@@ -17,7 +17,7 @@ jobs:
       # Matrix内で失敗したジョブがあっても実行させる。
       fail-fast: false
       matrix:
-        build_type: [debug, release]
+        build_type: [Debug, Release]
         compiler:
           - { cc: gcc-11, cxx: g++-11 }
           - { cc: clang-12, cxx: clang++-12 }  
@@ -42,9 +42,9 @@ jobs:
       - uses: lukka/get-cmake@latest
       - name: Configure CMake
         run: |
-          cmake --preset linux-${{ matrix.build_type }}
+          cmake --preset Linux
       - name: Build
         run: |
-          cmake --build --preset target-linux-${{ matrix.build_type }}
+          cmake --build --preset Linux-${{ matrix.build_type }}
 
 # @third party code - END poac

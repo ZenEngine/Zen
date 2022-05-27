@@ -16,7 +16,7 @@ jobs:
       fail-fast: false
       matrix:
         compiler: [cl, g++, clang++]
-        build_type: [debug, release]
+        build_type: [Debug, Release]
     steps:
       - uses: actions/checkout@v2
       - uses: ilammy/msvc-dev-cmd@v1
