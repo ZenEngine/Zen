@@ -1,9 +1,6 @@
 project(Launch CXX)
 
-#-------------------------------------------------
-# Library
-#-------------------------------------------------
-add_executable(Launch)
+add_executable(Launch WIN32)
 
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 	set(PRIVATE_SOURCES
