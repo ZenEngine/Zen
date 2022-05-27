@@ -2,7 +2,25 @@
   "version": 3,
   "configurePresets": [
     {
-      "name": "Base",
+      "name": "debug",
+      "hidden": true,
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": {
+          "CMAKE_BUILD_TYPE": "Debug"
+        }
+      }
+    },
+    {
+      "name": "release",
+      "hidden": true,
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": {
+          "CMAKE_BUILD_TYPE": "Release"
+        }
+      }
+    },
+    {
+      "name": "base",
       "hidden": true,
       "generator": "Ninja",
       "binaryDir": "${sourceDir}/_Build/${presetName}",
@@ -12,7 +30,12 @@
     },
     {
       "name": "Windows",
-      "inherits": "Base",
+      "displayName": "Windows",
+      "inherits": "base",
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
       "condition": {
         "type": "equals",
         "lhs": "${hostSystemName}",
@@ -21,7 +44,7 @@
     },
     {
       "name": "Linux",
-      "inherits": "Base",
+      "inherits": "base",
       "vendor": {
         "microsoft.com/VisualStudioSettings/CMake/1.0": {
           "hostOS": [
@@ -37,25 +60,19 @@
   "buildPresets": [
     {
       "name": "Windows-Debug",
-      "configurePreset": "Windows",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Debug"
-      }
+      "configurePreset": "Windows"
     },
     {
       "name": "Windows-Release",
-      "configurePreset": "Windows",
-      "configuration": "Release"
+      "configurePreset": "Windows"
     },
     {
       "name": "Linux-Debug",
-      "configurePreset": "Linux",
-      "configuration": "Debug"
+      "configurePreset": "Linux"
     },
     {
       "name": "Linux-Release",
-      "configurePreset": "Linux",
-      "configuration": "Release"
+      "configurePreset": "Linux"
     }
-  ]
+  ]  
 }
