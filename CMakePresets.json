@@ -2,7 +2,25 @@
   "version": 3,
   "configurePresets": [
     {
-      "name": "Base",
+      "name": "debug",
+      "hidden": true,
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": {
+          "CMAKE_BUILD_TYPE": "Debug"
+        }
+      }
+    },
+    {
+      "name": "release",
+      "hidden": true,
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": {
+          "CMAKE_BUILD_TYPE": "Release"
+        }
+      }
+    },
+    {
+      "name": "base",
       "hidden": true,
       "generator": "Ninja",
       "binaryDir": "${sourceDir}/_Build/${presetName}",
@@ -11,8 +29,14 @@
       }
     },
     {
-      "name": "Windows",
-      "inherits": "Base",
+      "name": "windows-base",
+      "displayName": "Windows",
+      "inherits": "base",
+      "hidden": true,
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
       "condition": {
         "type": "equals",
         "lhs": "${hostSystemName}",
@@ -20,8 +44,10 @@
       }
     },
     {
-      "name": "Linux",
-      "inherits": "Base",
+      "name": "linux-base",
+      "displayName": "Linux",
+      "inherits": "base",
+      "hidden": true,
       "vendor": {
         "microsoft.com/VisualStudioSettings/CMake/1.0": {
           "hostOS": [
@@ -32,28 +58,48 @@
           "sourceDir": "$env{HOME}/.vs/$ms{projectDirName}"
         }
       }
+    },
+    {
+      "name": "windows-debug",
+      "displayName": "Windows Debug",
+      "inherits": [ "windows-base", "debug" ]
+    },
+    {
+      "name": "windows-release",
+      "displayName": "Windows Release",
+      "inherits": [ "windows-base", "release" ]
+    },
+    {
+      "name": "linux-debug",
+      "displayName": "Linux Debug",
+      "inherits": [ "linux-base", "debug" ]
+    },
+    {
+      "name": "linux-release",
+      "displayName": "Linux Release",
+      "inherits": [ "linux-base", "release" ]
     }
   ],
   "buildPresets": [
     {
-      "name": "Windows-Debug",
-      "configurePreset": "Windows",
-      "configuration": "Debug"
+      "name": "windows-debug",
+      "displayName": "Default",
+      "configurePreset": "windows-debug"
     },
     {
-      "name": "Windows-Release",
-      "configurePreset": "Windows",
-      "configuration": "Release"
+      "name": "windows-release",
+      "displayName": "Release",
+      "configurePreset": "windows-release"
     },
     {
-      "name": "Linux-Debug",
-      "configurePreset": "Linux",
-      "configuration": "Debug"
+      "name": "linux-debug",
+      "displayName": "Debug",
+      "configurePreset": "linux-debug"
     },
     {
-      "name": "Linux-Release",
-      "configurePreset": "Linux",
-      "configuration": "Release"
+      "name": "linux-release",
+      "displayName": "Release",
+      "configurePreset": "linux-release"
     }
-  ]
+  ]  
 }
