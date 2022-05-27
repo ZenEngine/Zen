@@ -13,10 +13,6 @@
     {
       "name": "Windows",
       "inherits": "Base",
-      "architecture": {
-        "value": "x64",
-        "strategy": "external"
-      },
       "condition": {
         "type": "equals",
         "lhs": "${hostSystemName}",
@@ -29,43 +25,35 @@
       "vendor": {
         "microsoft.com/VisualStudioSettings/CMake/1.0": {
           "hostOS": [
-              "Linux"
-            ]
+            "Linux"
+          ]
         },
         "microsoft.com/VisualStudioRemoteSettings/CMake/1.0": {
           "sourceDir": "$env{HOME}/.vs/$ms{projectDirName}"
         }
       }
-    }   
+    }
   ],
   "buildPresets": [
     {
       "name": "Windows-Debug",
       "configurePreset": "Windows",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Debug"
-      }
+      "configuration": "Debug"
     },
     {
       "name": "Windows-Release",
       "configurePreset": "Windows",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release"
-      }
+      "configuration": "Release"
     },
     {
       "name": "Linux-Debug",
       "configurePreset": "Linux",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Debug"
-      }
+      "configuration": "Debug"
     },
     {
       "name": "Linux-Release",
       "configurePreset": "Linux",
-      "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release"
-      }
+      "configuration": "Release"
     }
-  ]  
+  ]
 }
