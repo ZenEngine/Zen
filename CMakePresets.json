@@ -82,22 +82,22 @@
   ],
   "buildPresets": [
     {
-      "name": "windows-debug",
+      "name": "target-windows-debug",
       "displayName": "Default",
       "configurePreset": "windows-debug"
     },
     {
-      "name": "windows-release",
+      "name": "target-windows-release",
       "displayName": "Release",
       "configurePreset": "windows-release"
     },
     {
-      "name": "linux-debug",
+      "name": "target-linux-debug",
       "displayName": "Debug",
       "configurePreset": "linux-debug"
     },
     {
-      "name": "linux-release",
+      "name": "target-linux-release",
       "displayName": "Release",
       "configurePreset": "linux-release"
     }
