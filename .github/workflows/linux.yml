@@ -45,6 +45,6 @@ jobs:
           cmake --preset linux-${{ matrix.build_type }}
       - name: Build
         run: |
-          cmake --build --preset linux-${{ matrix.build_type }}
+          cmake --build --preset target-linux-${{ matrix.build_type }}
 
 # @third party code - END poac
