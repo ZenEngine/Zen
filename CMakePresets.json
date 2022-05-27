@@ -38,7 +38,9 @@
     {
       "name": "Windows-Debug",
       "configurePreset": "Windows",
-      "configuration": "Debug"
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
     },
     {
       "name": "Windows-Release",
