@@ -1,0 +1,50 @@
+# @third party code - BEGIN Based on poac (Apache License 2.0)
+
+name: Linux
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      # Matrix内で失敗したジョブがあっても実行させる。
+      fail-fast: false
+      matrix:
+        build_type: [Debug, Release]
+        compiler:
+          - { cc: gcc-11, cxx: g++-11 }
+          - { cc: clang-12, cxx: clang++-12 }  
+    env:
+      CC: ${{ matrix.compiler.cc }}
+      CXX: ${{ matrix.compiler.cxx }}            
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Install GCC
+        if: startsWith(matrix.compiler.cc, 'gcc')
+        run: |
+          sudo apt update
+          sudo apt-get install -y ${{ matrix.compiler.cxx }} 
+  
+      - name: Install Clang
+        if: startsWith(matrix.compiler.cc, 'clang')
+        run: |
+          sudo apt update
+          sudo apt-get install -y ${{ matrix.compiler.cc }} 
+          
+      - uses: lukka/get-cmake@latest
+      - name: Configure CMake
+        run: |
+          cmake --preset Linux
+      - name: Build
+        run: |
+          cmake --build --preset Linux-${{ matrix.build_type }}
+
+# @third party code - END poac
