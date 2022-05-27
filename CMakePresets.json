@@ -84,17 +84,17 @@
     },
     {
       "name": "windows-release",
-      "displayName": "Release",
+      "displayName": "Default",
       "configurePreset": "windows-release"
     },
     {
       "name": "linux-debug",
-      "displayName": "Debug",
+      "displayName": "Default",
       "configurePreset": "linux-debug"
     },
     {
       "name": "linux-release",
-      "displayName": "Release",
+      "displayName": "Default",
       "configurePreset": "linux-release"
     }
   ]  
