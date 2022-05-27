@@ -29,9 +29,10 @@
       }
     },
     {
-      "name": "Windows",
+      "name": "windows-base",
       "displayName": "Windows",
       "inherits": "base",
+      "hidden": true,
       "architecture": {
         "value": "x64",
         "strategy": "external"
@@ -43,8 +44,10 @@
       }
     },
     {
-      "name": "Linux",
+      "name": "linux-base",
+      "displayName": "Linux",
       "inherits": "base",
+      "hidden": true,
       "vendor": {
         "microsoft.com/VisualStudioSettings/CMake/1.0": {
           "hostOS": [
@@ -55,24 +58,48 @@
           "sourceDir": "$env{HOME}/.vs/$ms{projectDirName}"
         }
       }
+    },
+    {
+      "name": "windows-debug",
+      "displayName": "Windows Debug",
+      "inherits": [ "windows-base", "debug" ]
+    },
+    {
+      "name": "windows-release",
+      "displayName": "Windows Release",
+      "inherits": [ "windows-base", "release" ]
+    },
+    {
+      "name": "linux-debug",
+      "displayName": "Linux Debug",
+      "inherits": [ "linux-base", "debug" ]
+    },
+    {
+      "name": "linux-release",
+      "displayName": "Linux Release",
+      "inherits": [ "linux-base", "release" ]
     }
   ],
   "buildPresets": [
     {
-      "name": "Windows-Debug",
-      "configurePreset": "Windows"
+      "name": "windows-debug",
+      "displayName": "Default",
+      "configurePreset": "windows-debug"
     },
     {
-      "name": "Windows-Release",
-      "configurePreset": "Windows"
+      "name": "windows-release",
+      "displayName": "Release",
+      "configurePreset": "windows-release"
     },
     {
-      "name": "Linux-Debug",
-      "configurePreset": "Linux"
+      "name": "linux-debug",
+      "displayName": "Debug",
+      "configurePreset": "linux-debug"
     },
     {
-      "name": "Linux-Release",
-      "configurePreset": "Linux"
+      "name": "linux-release",
+      "displayName": "Release",
+      "configurePreset": "linux-release"
     }
   ]  
 }
