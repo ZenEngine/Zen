@@ -12,16 +12,18 @@ jobs:
   build:
     runs-on: windows-latest
     strategy:
+      # Matrix内で失敗したジョブがあっても実行させる。
+      fail-fast: false
       matrix:
         compiler: [cl, g++, clang++]
-        build-config: [Debug, Release]
+        build_type: [Debug, Release]
     steps:
       - uses: actions/checkout@v2
       - uses: ilammy/msvc-dev-cmd@v1
       - uses: lukka/get-cmake@latest
-      - name: Generate
+      - name: Configure CMake
         run: |
           cmake --preset Windows -DCMAKE_CXX_COMPILER=${{ matrix.compiler }}
       - name: Build
         run: |
-          cmake --build --preset Windows-${{ matrix.build-config }}
+          cmake --build --preset Windows-${{ matrix.build_type }}
