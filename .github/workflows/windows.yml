@@ -1,0 +1,27 @@
+name: Windows
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows_latest
+    strategy:
+      matrix:
+        compiler: [cl, g++, clang++]
+        build-config: [Debug, Release]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ilammy/msvc-dev-cmd@v1
+      - uses: lukka/get-cmake@latest
+      - name: Generate
+        run: |
+          cmake --preset Windows -DCMAKE_CXX_COMPILER=${{ matrix.compiler }}
+      - name: Build
+        run: |
+          cmake --build --preset Windows-${{ matrix.build-config }}
