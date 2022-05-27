@@ -13,6 +13,10 @@
     {
       "name": "Windows",
       "inherits": "Base",
+      "architecture": {
+        "value": "x64",
+        "strategy": "external"
+      },
       "condition": {
         "type": "equals",
         "lhs": "${hostSystemName}",
@@ -38,22 +42,30 @@
     {
       "name": "Windows-Debug",
       "configurePreset": "Windows",
-      "configuration": "Debug"
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
     },
     {
       "name": "Windows-Release",
       "configurePreset": "Windows",
-      "configuration": "Release"
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
     },
     {
       "name": "Linux-Debug",
       "configurePreset": "Linux",
-      "configuration": "Debug"
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      }
     },
     {
       "name": "Linux-Release",
       "configurePreset": "Linux",
-      "configuration": "Release"  
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
     }
   ]  
 }
