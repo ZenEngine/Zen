@@ -12,3 +12,12 @@ cpp_generate_documentation_comments = doxygen_slash_star
 [*.yml]
 indent_style = space
 indent_size = 2
+
+[*.txt]
+charset = utf-8
+
+[*.json]
+charset = utf-8
+
+[*.md]
+charset = utf-8
