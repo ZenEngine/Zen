@@ -19,7 +19,7 @@ set_target_properties(Math
 		FOLDER Engine
 	)
 
-target_compile_features(Math PRIVATE cxx_std_17)
+target_compile_features(Math PRIVATE cxx_std_20)
 
 target_sources(Math 
 	PRIVATE 
