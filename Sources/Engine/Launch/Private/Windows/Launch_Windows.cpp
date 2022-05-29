@@ -1,3 +1,4 @@
+#include "./../Main.hpp"
 #include <Windows.h>
 
 int WINAPI wWinMain(
@@ -6,6 +7,6 @@ int WINAPI wWinMain(
     [[maybe_unused]] _In_ LPWSTR lpCmdLine,
     [[maybe_unused]] _In_ int nCmdShow)
 {
-    return 0;
+    return zen::runMain();
 }
 

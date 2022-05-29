@@ -21,7 +21,11 @@
       "generator": "Ninja",
       "binaryDir": "${sourceDir}/_Build/${presetName}",
       "cacheVariables": {
-        "CMAKE_INSTALL_PREFIX": "${sourceDir}/_Build/Install/${presetName}"
+        "CMAKE_INSTALL_PREFIX": "${sourceDir}/_Build/Install/${presetName}",
+        "CMAKE_TOOLCHAIN_FILE": {
+          "type": "FILEPATH",
+          "value": "${sourceDir}/BuildTools/vcpkg/scripts/buildsystems/vcpkg.cmake"
+        }
       }
     },
     {

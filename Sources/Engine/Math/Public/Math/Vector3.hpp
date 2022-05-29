@@ -2,8 +2,14 @@
 #include <Core/Misc/Assert.hpp>
 #include <Core/Platform/PlatformDefine.hpp>
 #include <cstdint>
+#include <cstddef>
 #include <cmath>
 
+namespace std
+{
+    template <class ElementType, size_t Extent>
+    class span;
+}
 
 namespace zen
 {
@@ -27,6 +33,12 @@ namespace zen
         * @param[in] z Z成分
         */
         Vector3f(float x, float y, float z) noexcept;
+
+
+        /**
+        * @brief 配列のスライスによって初期化を行います。
+        */
+        Vector3f(std::span<const float, 3> span) noexcept;
 
         Vector3f(const Vector3f& other) noexcept = default;
         Vector3f& operator=(const Vector3f& other) noexcept = default;
@@ -82,6 +94,13 @@ namespace zen
         [[nodiscard]] float lengthSquared() const noexcept;
 
         /**
+        * @brief 正規化したベクトルを返します。高速化のために０除算のチェックを行いません。
+        *
+        * @pre ベクトルの長さが0より大きくなければいけません。
+        */
+        [[nodiscard]] Vector3f normalizedUnsafe() const noexcept;
+
+        /**
         * @brief 二点間の距離を計算します。
         */
         [[nodiscard]] static float distance(const Vector3f& v1, const Vector3f& v2) noexcept;
@@ -125,6 +144,15 @@ namespace zen
         */
         [[nodiscard]] static Vector3f reflect(const Vector3f& direction, const Vector3f& normal) noexcept;
 
+        /**
+        * @brief 二つのベクトルのなす角を求めます
+        *
+        * @param[in] v1 ベクトル1
+        * @param[in] v2 ベクトル2
+        *
+        * @return 二つのベクトルのなす角
+        */
+        [[nodiscard]] static float angleBetween(const Vector3f& v1, const Vector3f& v2) noexcept;
 
         static const Vector3f zero;
         static const Vector3f one;
@@ -304,6 +332,11 @@ namespace zen
         return _x * _x + _y * _y + _z * _z;
     }
 
+    ZEN_FORCEINLINE Vector3f Vector3f::normalizedUnsafe() const noexcept
+    {
+        const float invLength{ 1.0f / length() };
+        return *this * invLength;
+    }
 
     ZEN_FORCEINLINE float Vector3f::distance(const Vector3f& v1, const Vector3f& v2) noexcept
     {
@@ -333,5 +366,10 @@ namespace zen
     ZEN_FORCEINLINE Vector3f Vector3f::reflect(const Vector3f& direction, const Vector3f& normal) noexcept
     {
         return direction - normal * Vector3f{ Vector3f::dot(normal, direction) * 2.0f };
+    }
+
+    ZEN_FORCEINLINE float Vector3f::angleBetween(const Vector3f& v1, const Vector3f& v2) noexcept
+    {
+        return std::acos(Vector3f::dot(v1, v2) / std::sqrt(v1.lengthSquared() * v2.lengthSquared()));
     }
 }

@@ -5,6 +5,8 @@ add_executable(Launch WIN32)
 if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
 	set(PRIVATE_SOURCES
 		"${CMAKE_CURRENT_SOURCE_DIR}/Private/Windows/Launch_Windows.cpp"
+		"${CMAKE_CURRENT_SOURCE_DIR}/Private/Main.cpp"
+		"${CMAKE_CURRENT_SOURCE_DIR}/Private/Main.hpp"
 	)
 
     target_link_options(Launch

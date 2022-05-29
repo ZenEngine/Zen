@@ -2,6 +2,24 @@ project(Core CXX)
 
 add_library(Core STATIC)
 
+if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+	target_compile_definitions(Core
+		PUBLIC
+			ZEN_PLATFORM_WINDOWS
+			NOMINMAX
+	)
+elseif(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+	target_compile_definitions(Core
+		PUBLIC
+			ZEN_PLATFORM_MAC
+	)
+elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+	target_compile_definitions(Core
+		PUBLIC
+			ZEN_PLATFORM_LINUX
+	)
+endif()
+
 set(PRIVATE_SOURCES
 	"${CMAKE_CURRENT_SOURCE_DIR}/Private/Misc/Enviroment.cpp"
 )
@@ -23,6 +41,7 @@ set_target_properties(Core
 target_compile_definitions(Core
 	PUBLIC
 		$<$<CONFIG:DEBUG>:ZEN_DEBUG>
+		$<$<CONFIG:RELEASE>:ZEN_RELEASE>
 )
 
 target_sources(Core 
@@ -38,6 +57,7 @@ target_compile_options(Core
 	PRIVATE 
 		$<$<CXX_COMPILER_ID:MSVC>:/W4 /utf-8>
 		$<$<CXX_COMPILER_ID:Clang>:-Wall -pedantic -Werror -Wextra -Wno-unused-parameter -fsigned-char>
+		$<$<CXX_COMPILER_ID:GNU>:-Wall -pedantic -Wextra>
 	)
 
 target_include_directories(Core
