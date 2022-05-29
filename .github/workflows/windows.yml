@@ -17,15 +17,18 @@ jobs:
       matrix:
         compiler: [cl, g++, clang++]
         build_type: [debug, release]
+    env:
+      VCPKG_ROOT: ${{ github.workspace }}/BuildTools/vcpkg
+      VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}/BuildTools/vcpkg/bincache
     steps:
       - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: "Create directory '${{ env.VCPKG_DEFAULT_BINARY_CACHE }}'"
+        run: mkdir -p $VCPKG_DEFAULT_BINARY_CACHE
+        shell: bash
       - uses: lukka/get-cmake@latest
       - uses: ilammy/msvc-dev-cmd@v1
-      - name: Restore artifacts, or setup vcpkg (do not install any package)
-        uses: lukka/run-vcpkg@v10
-        with:
-          vcpkgGitCommitId: '14e7bb4ae24616ec54ff6b2f6ef4e8659434ea44'
-          vcpkgJsonGlob: 'vcpkg.json'
       - name: Configure CMake
         run: |
           cmake --preset windows-${{ matrix.build_type }} -DCMAKE_CXX_COMPILER=${{ matrix.compiler }}
