@@ -28,7 +28,20 @@ target_sources(Math
 		${PUBLIC_HEADERS}
 	)
 
+target_compile_options(Math
+	PUBLIC
+		$<$<CXX_COMPILER_ID:MSVC>:/wd4251>
+	PRIVATE 
+		$<$<CXX_COMPILER_ID:MSVC>:/W4 /utf-8>
+		$<$<CXX_COMPILER_ID:Clang>:-Wall -pedantic -Werror -Wextra -Wno-unused-parameter -fsigned-char>
+	)
+
 target_include_directories(Math
 	PUBLIC
 		${CMAKE_CURRENT_SOURCE_DIR}/Public
 	)
+
+target_link_libraries(Math
+   PUBLIC
+       Core
+)
