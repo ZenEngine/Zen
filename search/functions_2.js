@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['vector3f_0',['Vector3f',['../structzen_1_1_vector3f.html#a3d40623777a9217a0673bd8c899ae49f',1,'zen::Vector3f::Vector3f(float value) noexcept'],['../structzen_1_1_vector3f.html#a551c5e339470e7cb487c2e82ba1ff328',1,'zen::Vector3f::Vector3f(float x, float y, float z) noexcept']]]
+  ['distance_0',['distance',['../structzen_1_1_vector3f.html#a7aa49f1b6d2c1c77873cccd40db763ca',1,'zen::Vector3f']]],
+  ['distancesquared_1',['distanceSquared',['../structzen_1_1_vector3f.html#ad3d8e3097275c21c7c945c33942b3f1d',1,'zen::Vector3f']]],
+  ['dot_2',['dot',['../structzen_1_1_vector3f.html#af731df9b75fc86a9577e20d89e1d66bf',1,'zen::Vector3f::dot()'],['../structzen_1_1_vector4f.html#affb6b6558e90ba3312cc538341a7d9d3',1,'zen::Vector4f::dot()']]]
 ];

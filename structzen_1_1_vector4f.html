@@ -69,6 +69,9 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-types">公開型</a> &#124;
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="#pub-static-methods">静的公開メンバ関数</a> &#124;
+<a href="#friends">フレンド</a> &#124;
 <a href="structzen_1_1_vector4f-members.html">全メンバ一覧</a>  </div>
   <div class="headertitle"><div class="title">zen::Vector4f 構造体<span class="mlabels"><span class="mlabel">final</span></span></div></div>
 </div><!--header-->
@@ -79,7 +82,250 @@ $(function() {
 <tr class="memitem:a4cb5cc05be2cd14db53bfe81698d5853"><td class="memItemLeft" align="right" valign="top"><a id="a4cb5cc05be2cd14db53bfe81698d5853" name="a4cb5cc05be2cd14db53bfe81698d5853"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>SimdType</b> = __m128</td></tr>
 <tr class="separator:a4cb5cc05be2cd14db53bfe81698d5853"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:ac037b1bdaa0f5bd1e76a5bbc0806181f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structzen_1_1_vector4f.html#ac037b1bdaa0f5bd1e76a5bbc0806181f">Vector4f</a> (float value) noexcept</td></tr>
+<tr class="memdesc:ac037b1bdaa0f5bd1e76a5bbc0806181f"><td class="mdescLeft">&#160;</td><td class="mdescRight">すべての成分をひとつの値で初期化するコンストラクタ。  <a href="structzen_1_1_vector4f.html#ac037b1bdaa0f5bd1e76a5bbc0806181f">[詳解]</a><br /></td></tr>
+<tr class="separator:ac037b1bdaa0f5bd1e76a5bbc0806181f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30059fa823131d87e467710136e6a22e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structzen_1_1_vector4f.html#a30059fa823131d87e467710136e6a22e">Vector4f</a> (float x, float y, float z, float w) noexcept</td></tr>
+<tr class="memdesc:a30059fa823131d87e467710136e6a22e"><td class="mdescLeft">&#160;</td><td class="mdescRight">各成分をそれぞれの値で初期化するコンストラクタ。  <a href="structzen_1_1_vector4f.html#a30059fa823131d87e467710136e6a22e">[詳解]</a><br /></td></tr>
+<tr class="separator:a30059fa823131d87e467710136e6a22e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a67b808cefed9e3b51fd10f1b6bc07f"><td class="memItemLeft" align="right" valign="top"><a id="a4a67b808cefed9e3b51fd10f1b6bc07f" name="a4a67b808cefed9e3b51fd10f1b6bc07f"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Vector4f</b> (const <a class="el" href="structzen_1_1_vector4f.html">Vector4f</a> &amp;other) noexcept=default</td></tr>
+<tr class="separator:a4a67b808cefed9e3b51fd10f1b6bc07f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19010731b41ca8f725fa48221945d1d5"><td class="memItemLeft" align="right" valign="top"><a id="a19010731b41ca8f725fa48221945d1d5" name="a19010731b41ca8f725fa48221945d1d5"></a>
+<a class="el" href="structzen_1_1_vector4f.html">Vector4f</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="structzen_1_1_vector4f.html">Vector4f</a> &amp;other) noexcept=default</td></tr>
+<tr class="separator:a19010731b41ca8f725fa48221945d1d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e3c160d4625caac3d10f2bfb61ab2dc"><td class="memItemLeft" align="right" valign="top"><a id="a9e3c160d4625caac3d10f2bfb61ab2dc" name="a9e3c160d4625caac3d10f2bfb61ab2dc"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Vector4f</b> (<a class="el" href="structzen_1_1_vector4f.html">Vector4f</a> &amp;&amp;other) noexcept=default</td></tr>
+<tr class="separator:a9e3c160d4625caac3d10f2bfb61ab2dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a310283317e9e575c8db3717418766443"><td class="memItemLeft" align="right" valign="top"><a id="a310283317e9e575c8db3717418766443" name="a310283317e9e575c8db3717418766443"></a>
+<a class="el" href="structzen_1_1_vector4f.html">Vector4f</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="structzen_1_1_vector4f.html">Vector4f</a> &amp;&amp;other) noexcept=default</td></tr>
+<tr class="separator:a310283317e9e575c8db3717418766443"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ba31548f9238407fbfc8c974d9361e4"><td class="memItemLeft" align="right" valign="top"><a id="a7ba31548f9238407fbfc8c974d9361e4" name="a7ba31548f9238407fbfc8c974d9361e4"></a>
+<a class="el" href="structzen_1_1_vector4f.html">Vector4f</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator-</b> () const noexcept</td></tr>
+<tr class="separator:a7ba31548f9238407fbfc8c974d9361e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7d0a757562348320bcebee5412ee8be"><td class="memItemLeft" align="right" valign="top"><a id="ab7d0a757562348320bcebee5412ee8be" name="ab7d0a757562348320bcebee5412ee8be"></a>
+<a class="el" href="structzen_1_1_vector4f.html">Vector4f</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator+</b> (const <a class="el" href="structzen_1_1_vector4f.html">Vector4f</a> &amp;v) const noexcept</td></tr>
+<tr class="separator:ab7d0a757562348320bcebee5412ee8be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a498c4490133e53245b37f699a76561f0"><td class="memItemLeft" align="right" valign="top"><a id="a498c4490133e53245b37f699a76561f0" name="a498c4490133e53245b37f699a76561f0"></a>
+<a class="el" href="structzen_1_1_vector4f.html">Vector4f</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator-</b> (const <a class="el" href="structzen_1_1_vector4f.html">Vector4f</a> &amp;v) const noexcept</td></tr>
+<tr class="separator:a498c4490133e53245b37f699a76561f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84353f5bd7595d9e34584ad1108009a1"><td class="memItemLeft" align="right" valign="top"><a id="a84353f5bd7595d9e34584ad1108009a1" name="a84353f5bd7595d9e34584ad1108009a1"></a>
+<a class="el" href="structzen_1_1_vector4f.html">Vector4f</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> (const <a class="el" href="structzen_1_1_vector4f.html">Vector4f</a> &amp;v) const noexcept</td></tr>
+<tr class="separator:a84353f5bd7595d9e34584ad1108009a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74c95a719b346e005b2b86770d659435"><td class="memItemLeft" align="right" valign="top"><a id="a74c95a719b346e005b2b86770d659435" name="a74c95a719b346e005b2b86770d659435"></a>
+<a class="el" href="structzen_1_1_vector4f.html">Vector4f</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> (float scale) const noexcept</td></tr>
+<tr class="separator:a74c95a719b346e005b2b86770d659435"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a762eaa279869f95e1697b453a4caba3e"><td class="memItemLeft" align="right" valign="top"><a id="a762eaa279869f95e1697b453a4caba3e" name="a762eaa279869f95e1697b453a4caba3e"></a>
+<a class="el" href="structzen_1_1_vector4f.html">Vector4f</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator/</b> (const <a class="el" href="structzen_1_1_vector4f.html">Vector4f</a> &amp;v) const noexcept</td></tr>
+<tr class="separator:a762eaa279869f95e1697b453a4caba3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6e83ef778663f963513d9026027bdcd"><td class="memItemLeft" align="right" valign="top"><a id="af6e83ef778663f963513d9026027bdcd" name="af6e83ef778663f963513d9026027bdcd"></a>
+<a class="el" href="structzen_1_1_vector4f.html">Vector4f</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator/</b> (float scale) const noexcept</td></tr>
+<tr class="separator:af6e83ef778663f963513d9026027bdcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bf66dd2e69f5c93e1206088efb6c771"><td class="memItemLeft" align="right" valign="top"><a id="a9bf66dd2e69f5c93e1206088efb6c771" name="a9bf66dd2e69f5c93e1206088efb6c771"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (const <a class="el" href="structzen_1_1_vector4f.html">Vector4f</a> &amp;v) const noexcept</td></tr>
+<tr class="separator:a9bf66dd2e69f5c93e1206088efb6c771"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41e9892da493d0ab142746399cfa1bfc"><td class="memItemLeft" align="right" valign="top"><a id="a41e9892da493d0ab142746399cfa1bfc" name="a41e9892da493d0ab142746399cfa1bfc"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (const <a class="el" href="structzen_1_1_vector4f.html">Vector4f</a> &amp;v) const noexcept</td></tr>
+<tr class="separator:a41e9892da493d0ab142746399cfa1bfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8bbb0f4a2578a7cd1c3029a5d144abf"><td class="memItemLeft" align="right" valign="top"><a id="af8bbb0f4a2578a7cd1c3029a5d144abf" name="af8bbb0f4a2578a7cd1c3029a5d144abf"></a>
+float &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (int32_t index) noexcept</td></tr>
+<tr class="separator:af8bbb0f4a2578a7cd1c3029a5d144abf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8bc6e17bc1ce6fdf36e74e3c64cd264"><td class="memItemLeft" align="right" valign="top"><a id="ac8bc6e17bc1ce6fdf36e74e3c64cd264" name="ac8bc6e17bc1ce6fdf36e74e3c64cd264"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>operator[]</b> (int32_t index) const noexcept</td></tr>
+<tr class="separator:ac8bc6e17bc1ce6fdf36e74e3c64cd264"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a232efe93c57c7e747a8f26bf4ead4167"><td class="memItemLeft" align="right" valign="top"><a id="a232efe93c57c7e747a8f26bf4ead4167" name="a232efe93c57c7e747a8f26bf4ead4167"></a>
+<a class="el" href="structzen_1_1_vector4f.html">Vector4f</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator+=</b> (const <a class="el" href="structzen_1_1_vector4f.html">Vector4f</a> &amp;v) noexcept</td></tr>
+<tr class="separator:a232efe93c57c7e747a8f26bf4ead4167"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62cd839a9bd4e5bc41b01f02dc9b0c57"><td class="memItemLeft" align="right" valign="top"><a id="a62cd839a9bd4e5bc41b01f02dc9b0c57" name="a62cd839a9bd4e5bc41b01f02dc9b0c57"></a>
+<a class="el" href="structzen_1_1_vector4f.html">Vector4f</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator-=</b> (const <a class="el" href="structzen_1_1_vector4f.html">Vector4f</a> &amp;v) noexcept</td></tr>
+<tr class="separator:a62cd839a9bd4e5bc41b01f02dc9b0c57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17b2b09ce2017be8ebc9d021aa52efaf"><td class="memItemLeft" align="right" valign="top"><a id="a17b2b09ce2017be8ebc9d021aa52efaf" name="a17b2b09ce2017be8ebc9d021aa52efaf"></a>
+<a class="el" href="structzen_1_1_vector4f.html">Vector4f</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator*=</b> (const <a class="el" href="structzen_1_1_vector4f.html">Vector4f</a> &amp;v) noexcept</td></tr>
+<tr class="separator:a17b2b09ce2017be8ebc9d021aa52efaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c2246e4ad01a74be39b6cf7d2a82f05"><td class="memItemLeft" align="right" valign="top"><a id="a2c2246e4ad01a74be39b6cf7d2a82f05" name="a2c2246e4ad01a74be39b6cf7d2a82f05"></a>
+<a class="el" href="structzen_1_1_vector4f.html">Vector4f</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator/=</b> (const <a class="el" href="structzen_1_1_vector4f.html">Vector4f</a> &amp;v) noexcept</td></tr>
+<tr class="separator:a2c2246e4ad01a74be39b6cf7d2a82f05"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a853a3e24eafcf03d49cd0f72780e25c4"><td class="memItemLeft" align="right" valign="top"><a id="a853a3e24eafcf03d49cd0f72780e25c4" name="a853a3e24eafcf03d49cd0f72780e25c4"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>getX</b> () const noexcept</td></tr>
+<tr class="separator:a853a3e24eafcf03d49cd0f72780e25c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb565375c1b3f34b274cff4914f449f3"><td class="memItemLeft" align="right" valign="top"><a id="abb565375c1b3f34b274cff4914f449f3" name="abb565375c1b3f34b274cff4914f449f3"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>getY</b> () const noexcept</td></tr>
+<tr class="separator:abb565375c1b3f34b274cff4914f449f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4646911d6464680b4125a50b81e89cf9"><td class="memItemLeft" align="right" valign="top"><a id="a4646911d6464680b4125a50b81e89cf9" name="a4646911d6464680b4125a50b81e89cf9"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>getZ</b> () const noexcept</td></tr>
+<tr class="separator:a4646911d6464680b4125a50b81e89cf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0dbe41bad6548ffcf4f3b561f257cce4"><td class="memItemLeft" align="right" valign="top"><a id="a0dbe41bad6548ffcf4f3b561f257cce4" name="a0dbe41bad6548ffcf4f3b561f257cce4"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>getW</b> () const noexcept</td></tr>
+<tr class="separator:a0dbe41bad6548ffcf4f3b561f257cce4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2236dff7c4fc54e78ca4ea91be709f6"><td class="memItemLeft" align="right" valign="top"><a id="aa2236dff7c4fc54e78ca4ea91be709f6" name="aa2236dff7c4fc54e78ca4ea91be709f6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setX</b> (float x) noexcept</td></tr>
+<tr class="separator:aa2236dff7c4fc54e78ca4ea91be709f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f66fc18a641df7008c5dd1633b43117"><td class="memItemLeft" align="right" valign="top"><a id="a0f66fc18a641df7008c5dd1633b43117" name="a0f66fc18a641df7008c5dd1633b43117"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setY</b> (float y) noexcept</td></tr>
+<tr class="separator:a0f66fc18a641df7008c5dd1633b43117"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2268f1a414a051b0e43aa8dc7e48930"><td class="memItemLeft" align="right" valign="top"><a id="ac2268f1a414a051b0e43aa8dc7e48930" name="ac2268f1a414a051b0e43aa8dc7e48930"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setZ</b> (float z) noexcept</td></tr>
+<tr class="separator:ac2268f1a414a051b0e43aa8dc7e48930"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f73f931b0341ec1e397dd8bf965f7ea"><td class="memItemLeft" align="right" valign="top"><a id="a0f73f931b0341ec1e397dd8bf965f7ea" name="a0f73f931b0341ec1e397dd8bf965f7ea"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setW</b> (float w) noexcept</td></tr>
+<tr class="separator:a0f73f931b0341ec1e397dd8bf965f7ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+静的公開メンバ関数</h2></td></tr>
+<tr class="memitem:affb6b6558e90ba3312cc538341a7d9d3"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structzen_1_1_vector4f.html#affb6b6558e90ba3312cc538341a7d9d3">dot</a> (const <a class="el" href="structzen_1_1_vector4f.html">Vector4f</a> &amp;v1, const <a class="el" href="structzen_1_1_vector4f.html">Vector4f</a> &amp;v2) noexcept</td></tr>
+<tr class="memdesc:affb6b6558e90ba3312cc538341a7d9d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">内積を計算します。  <a href="structzen_1_1_vector4f.html#affb6b6558e90ba3312cc538341a7d9d3">[詳解]</a><br /></td></tr>
+<tr class="separator:affb6b6558e90ba3312cc538341a7d9d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+フレンド</h2></td></tr>
+<tr class="memitem:a338110b688bf478823592f2c4b9bb170"><td class="memItemLeft" align="right" valign="top"><a id="a338110b688bf478823592f2c4b9bb170" name="a338110b688bf478823592f2c4b9bb170"></a>
+<a class="el" href="structzen_1_1_vector4f.html">Vector4f</a>&#160;</td><td class="memItemRight" valign="bottom"><b>operator*</b> (float scale, const <a class="el" href="structzen_1_1_vector4f.html">Vector4f</a> &amp;v) noexcept</td></tr>
+<tr class="separator:a338110b688bf478823592f2c4b9bb170"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">構築子と解体子</h2>
+<a id="ac037b1bdaa0f5bd1e76a5bbc0806181f" name="ac037b1bdaa0f5bd1e76a5bbc0806181f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac037b1bdaa0f5bd1e76a5bbc0806181f">&#9670;&nbsp;</a></span>Vector4f() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ZEN_FORCEINLINE zen::Vector4f::Vector4f </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>すべての成分をひとつの値で初期化するコンストラクタ。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">value</td><td>すべての値をvalueで初期化 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a30059fa823131d87e467710136e6a22e" name="a30059fa823131d87e467710136e6a22e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30059fa823131d87e467710136e6a22e">&#9670;&nbsp;</a></span>Vector4f() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ZEN_FORCEINLINE zen::Vector4f::Vector4f </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>z</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>w</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>各成分をそれぞれの値で初期化するコンストラクタ。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">x</td><td>X成分 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">y</td><td>Y成分 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">z</td><td>Z成分 </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">w</td><td>W成分 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">関数詳解</h2>
+<a id="affb6b6558e90ba3312cc538341a7d9d3" name="affb6b6558e90ba3312cc538341a7d9d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affb6b6558e90ba3312cc538341a7d9d3">&#9670;&nbsp;</a></span>dot()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ZEN_FORCEINLINE float zen::Vector4f::dot </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structzen_1_1_vector4f.html">Vector4f</a> &amp;&#160;</td>
+          <td class="paramname"><em>v1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structzen_1_1_vector4f.html">Vector4f</a> &amp;&#160;</td>
+          <td class="paramname"><em>v2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>内積を計算します。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">v1</td><td>一つ目のベクトル </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">v2</td><td>二つ目のベクトル</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>戻り値</dt><dd>内積 </dd></dl>
+
+</div>
+</div>
 <hr/>この構造体詳解は次のファイルから抽出されました:<ul>
 <li>Sources/Engine/Math/Public/Math/<a class="el" href="_vector4_8hpp_source.html">Vector4.hpp</a></li>
 </ul>
