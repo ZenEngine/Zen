@@ -24,7 +24,7 @@
         "CMAKE_INSTALL_PREFIX": "${sourceDir}/_Build/Install/${presetName}",
         "CMAKE_TOOLCHAIN_FILE": {
           "type": "FILEPATH",
-          "value": "${sourceDir}/BuildTools/vcpkg/scripts/buildsystems/vcpkg.cmake"
+          "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
         }
       }
     },
