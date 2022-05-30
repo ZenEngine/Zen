@@ -19,7 +19,6 @@ jobs:
         build_type: [debug, release]
     env:
       VCPKG_ROOT: ${{ github.workspace }}/vcpkg
-      VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}/vcpkg/bincache
     steps:
       - uses: actions/checkout@v2
         with:
