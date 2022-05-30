@@ -18,8 +18,8 @@ jobs:
         compiler: [cl, g++, clang++]
         build_type: [debug, release]
     env:
-      VCPKG_ROOT: ${{ github.workspace }}/BuildTools/vcpkg
-      VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}/BuildTools/vcpkg/bincache
+      VCPKG_ROOT: ${{ github.workspace }}/vcpkg
+      VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}/vcpkg/bincache
     steps:
       - uses: actions/checkout@v2
         with:
