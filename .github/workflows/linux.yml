@@ -22,7 +22,6 @@ jobs:
           - { cc: gcc-11, cxx: g++-11 }
           - { cc: clang-12, cxx: clang++-12 }  
     env:
-      VCPKG_ROOT: ${{ github.workspace }}/vcpkg
       CC: ${{ matrix.compiler.cc }}
       CXX: ${{ matrix.compiler.cxx }}            
     steps:

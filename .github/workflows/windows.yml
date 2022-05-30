@@ -17,8 +17,6 @@ jobs:
       matrix:
         compiler: [cl, clang++]
         build_type: [debug, release]
-    env:
-      VCPKG_ROOT: ${{ github.workspace }}/vcpkg
     steps:
       - uses: actions/checkout@v2
         with:
