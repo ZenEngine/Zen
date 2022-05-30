@@ -35,12 +35,18 @@ jobs:
         language: [ 'cpp' ]
         # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
         # Learn more about CodeQL language support at https://aka.ms/codeql-docs/language-support
-
+    env:
+      CC: clang-12
+      CXX: clang++-12 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - uses: actions/checkout@v2
         with:
           submodules: true
+    - uses: lukka/get-cmake@latest      
+    - name: Install Clang
+        run: |
+          sudo apt update
+          sudo apt-get install -y clang++-12        
     # Initializes the CodeQL tools for scanning.
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
@@ -67,7 +73,8 @@ jobs:
 
     - run: |
       echo "Run, Build Application using script"
-      ./location_of_script_within_repo/buildscript.sh
+      cmake --preset linux-debug
+      cmake --build --preset linux-debug
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v2
