@@ -15,7 +15,7 @@ jobs:
       # Matrix内で失敗したジョブがあっても実行させる。
       fail-fast: false
       matrix:
-        compiler: [cl, g++, clang++]
+        compiler: [cl, clang++]
         build_type: [debug, release]
     env:
       VCPKG_ROOT: ${{ github.workspace }}/vcpkg
