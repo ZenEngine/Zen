@@ -7,6 +7,7 @@ set(PRIVATE_SOURCES
 )
 
 set(PUBLIC_HEADERS
+	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Math/Math.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Math/Vector3.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Math/Vector4.hpp"
 )

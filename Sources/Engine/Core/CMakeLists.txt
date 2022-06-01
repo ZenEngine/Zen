@@ -21,14 +21,17 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
 endif()
 
 set(PRIVATE_SOURCES
+	"${CMAKE_CURRENT_SOURCE_DIR}/Private/Containers/String.cpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Private/Hash/XxHash.cpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Private/Misc/Enviroment.cpp"
 )
 
 set(PUBLIC_HEADERS
+	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Containers/String.hpp"
+	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Hash/XxHash.hpp"
+	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Logger/Logger.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Misc/Assert.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Misc/Enviroment.hpp"
-	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Hash/XxHash.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Platform/PlatformDefine.hpp"
 )
 
@@ -62,11 +65,20 @@ target_compile_options(Core
 		$<$<CXX_COMPILER_ID:GNU>:-Wall -pedantic -Wextra>
 	)
 
+#if(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+#	find_package(ICU REQUIRED COMPONENTS uc dt)
+#endif()
+
 find_package(xxHash CONFIG REQUIRED)
+find_package(fmt CONFIG REQUIRED)
 
 target_link_libraries(Core
   PUBLIC
 	xxHash::xxhash
+	#$<$<NOT:$<PLATFORM_ID:Windows>>:ICU::dt>
+	#$<$<NOT:$<PLATFORM_ID:Windows>>:ICU::uc>
+  PRIVATE
+    fmt::fmt
 )
 
 target_include_directories(Core

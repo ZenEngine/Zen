@@ -2,13 +2,22 @@
 #include <Core/Platform/PlatformDefine.hpp>
 #include <xmmintrin.h>
 #include <smmintrin.h>
+#include <cstdint>
+#include <cstddef>
+
+namespace std
+{
+    template <class ElementType, size_t Extent>
+    class span;
+}
 
 namespace zen
 {
+    struct Vector3f;
     struct alignas(16) Vector4f final
     {
     public:
-        using SimdType = __m128;
+        using simd_type = __m128;
 
         [[nodiscard]]
         Vector4f() noexcept;
@@ -20,6 +29,8 @@ namespace zen
         */
         explicit Vector4f(float value) noexcept;
 
+        explicit Vector4f(simd_type value) noexcept;
+
         /**
         * @brief 各成分をそれぞれの値で初期化するコンストラクタ。
         *
@@ -30,6 +41,7 @@ namespace zen
         */
         Vector4f(float x, float y, float z, float w) noexcept;
 
+        Vector4f(std::span<const float, 4> span) noexcept;
 
         Vector4f(const Vector4f& other) noexcept = default;
         Vector4f& operator=(const Vector4f& other) noexcept = default;
@@ -85,10 +97,13 @@ namespace zen
         [[nodiscard]]
         static float dot(const Vector4f& v1, const Vector4f& v2) noexcept;
 
+        static const Vector4f zero;
+        static const Vector4f one;
+
     private:
         union
         {
-            SimdType _value;
+            simd_type _value;
             float _f32[4];
         };
     };
@@ -100,6 +115,11 @@ namespace zen
 
     ZEN_FORCEINLINE Vector4f::Vector4f(const float value) noexcept
         : Vector4f{ value, value, value, value }
+    {
+    }
+
+    ZEN_FORCEINLINE Vector4f::Vector4f(Vector4f::simd_type value) noexcept
+        : _value{ value }
     {
     }
 
