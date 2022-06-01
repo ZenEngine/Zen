@@ -46,3 +46,6 @@ target_link_libraries(Math
    PUBLIC
        Core
 )
+
+include(ZenBuildUtility)
+create_filters(${CMAKE_CURRENT_SOURCE_DIR} ${PUBLIC_HEADERS} ${PRIVATE_SOURCES})

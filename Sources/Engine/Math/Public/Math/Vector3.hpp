@@ -13,17 +13,17 @@ namespace std
 
 namespace zen
 {
-    struct Vector3f final
+    struct Vector3F final
     {
     public:
-        Vector3f() noexcept;
+        Vector3F() noexcept;
 
         /**
         * @brief すべての成分をひとつの値で初期化するコンストラクタ。
         *
         * @param value すべての値をvalueで初期化
         */
-        explicit Vector3f(float value) noexcept;
+        explicit Vector3F(float value) noexcept;
 
         /**
         * @brief 各成分をそれぞれの値で初期化するコンストラクタ。
@@ -32,39 +32,39 @@ namespace zen
         * @param[in] y Y成分
         * @param[in] z Z成分
         */
-        Vector3f(float x, float y, float z) noexcept;
+        Vector3F(float x, float y, float z) noexcept;
 
 
         /**
         * @brief 配列のスライスによって初期化を行います。
         */
-        Vector3f(std::span<const float, 3> span) noexcept;
+        Vector3F(std::span<const float, 3> span) noexcept;
 
-        Vector3f(const Vector3f& other) noexcept = default;
-        Vector3f& operator=(const Vector3f& other) noexcept = default;
-        Vector3f(Vector3f&& other) noexcept = default;
-        Vector3f& operator=(Vector3f&& other) noexcept = default;
-        ~Vector3f() noexcept = default;
+        Vector3F(const Vector3F& other) noexcept = default;
+        Vector3F& operator=(const Vector3F& other) noexcept = default;
+        Vector3F(Vector3F&& other) noexcept = default;
+        Vector3F& operator=(Vector3F&& other) noexcept = default;
+        ~Vector3F() noexcept = default;
 
-        [[nodiscard]] Vector3f operator-() const noexcept;
-        [[nodiscard]] Vector3f operator+(const Vector3f& v) const noexcept;
-        [[nodiscard]] Vector3f operator-(const Vector3f& v) const noexcept;
-        [[nodiscard]] Vector3f operator*(const Vector3f& v) const noexcept;
-        [[nodiscard]] Vector3f operator*(float scale) const noexcept;
-        [[nodiscard]] Vector3f operator/(const Vector3f& v) const noexcept;
-        [[nodiscard]] Vector3f operator/(float scale) const noexcept;
+        [[nodiscard]] Vector3F operator-() const noexcept;
+        [[nodiscard]] Vector3F operator+(const Vector3F& v) const noexcept;
+        [[nodiscard]] Vector3F operator-(const Vector3F& v) const noexcept;
+        [[nodiscard]] Vector3F operator*(const Vector3F& v) const noexcept;
+        [[nodiscard]] Vector3F operator*(float scale) const noexcept;
+        [[nodiscard]] Vector3F operator/(const Vector3F& v) const noexcept;
+        [[nodiscard]] Vector3F operator/(float scale) const noexcept;
 
-        [[nodiscard]] bool operator==(const Vector3f& v) const noexcept;
-        [[nodiscard]] bool operator!=(const Vector3f& v) const noexcept;
+        [[nodiscard]] bool operator==(const Vector3F& v) const noexcept;
+        [[nodiscard]] bool operator!=(const Vector3F& v) const noexcept;
         float& operator[](int32_t index) noexcept;
         float operator[](int32_t index) const noexcept;
         
-        Vector3f& operator+=(const Vector3f& v) noexcept;
-        Vector3f& operator-=(const Vector3f& v) noexcept;
-        Vector3f& operator*=(const Vector3f& v) noexcept;
-        Vector3f& operator/=(const Vector3f& v) noexcept;
+        Vector3F& operator+=(const Vector3F& v) noexcept;
+        Vector3F& operator-=(const Vector3F& v) noexcept;
+        Vector3F& operator*=(const Vector3F& v) noexcept;
+        Vector3F& operator/=(const Vector3F& v) noexcept;
 
-        friend Vector3f operator*(float scale, const Vector3f& v) noexcept;
+        friend Vector3F operator*(float scale, const Vector3F& v) noexcept;
 
         void setX(float x) noexcept;
         void setY(float y) noexcept;
@@ -98,12 +98,12 @@ namespace zen
         *
         * @pre ベクトルの長さが0より大きくなければいけません。
         */
-        [[nodiscard]] Vector3f normalizedUnsafe() const noexcept;
+        [[nodiscard]] Vector3F normalizedUnsafe() const noexcept;
 
         /**
         * @brief 二点間の距離を計算します。
         */
-        [[nodiscard]] static float distance(const Vector3f& v1, const Vector3f& v2) noexcept;
+        [[nodiscard]] static float distance(const Vector3F& v1, const Vector3F& v2) noexcept;
 
         /**
         * @brief 二点間の距離の二乗を計算します。
@@ -112,7 +112,7 @@ namespace zen
         *
         * @return 二点間の距離の二乗
         */
-        [[nodiscard]] static float distanceSquared(const Vector3f& v1, const Vector3f& v2) noexcept;
+        [[nodiscard]] static float distanceSquared(const Vector3F& v1, const Vector3F& v2) noexcept;
 
         /**
         * @brief 外積を計算します。
@@ -122,7 +122,7 @@ namespace zen
         *
         * @return 外積
         */
-        [[nodiscard]] static Vector3f cross(const Vector3f& v1, const Vector3f& v2) noexcept;
+        [[nodiscard]] static Vector3F cross(const Vector3F& v1, const Vector3F& v2) noexcept;
 
         /**
         * @brief 内積を計算します。
@@ -132,7 +132,7 @@ namespace zen
         *
         * @return 内積
         */
-        [[nodiscard]] static float dot(const Vector3f& v1, const Vector3f& v2) noexcept;
+        [[nodiscard]] static float dot(const Vector3F& v1, const Vector3F& v2) noexcept;
 
         /**
         * @brief 反射ベクトルを求めます。
@@ -142,7 +142,7 @@ namespace zen
         *
         * return 反射ベクトル
         */
-        [[nodiscard]] static Vector3f reflect(const Vector3f& direction, const Vector3f& normal) noexcept;
+        [[nodiscard]] static Vector3F reflect(const Vector3F& direction, const Vector3F& normal) noexcept;
 
         /**
         * @brief 二つのベクトルのなす角を求めます
@@ -152,10 +152,10 @@ namespace zen
         *
         * @return 二つのベクトルのなす角
         */
-        [[nodiscard]] static float angleBetween(const Vector3f& v1, const Vector3f& v2) noexcept;
+        [[nodiscard]] static float angleBetween(const Vector3F& v1, const Vector3F& v2) noexcept;
 
-        static const Vector3f zero;
-        static const Vector3f one;
+        static const Vector3F zero;
+        static const Vector3F one;
 
     private:
         float _x; ///< ベクトルのX成分
@@ -163,70 +163,70 @@ namespace zen
         float _z; ///< ベクトルのZ成分
     };
 
-    ZEN_FORCEINLINE Vector3f::Vector3f() noexcept
-        : Vector3f{ 0 }
+    ZEN_FORCEINLINE Vector3F::Vector3F() noexcept
+        : Vector3F{ 0 }
     {
     }
 
-    ZEN_FORCEINLINE Vector3f::Vector3f(const float value) noexcept
-        : Vector3f{ value, value, value }
+    ZEN_FORCEINLINE Vector3F::Vector3F(const float value) noexcept
+        : Vector3F{ value, value, value }
     {
     }
 
-    ZEN_FORCEINLINE Vector3f::Vector3f(const float x, const float y, const float z) noexcept
+    ZEN_FORCEINLINE Vector3F::Vector3F(const float x, const float y, const float z) noexcept
         : _x{ x }
         , _y{ y }
         , _z{ z }
     {
     }
 
-    ZEN_FORCEINLINE Vector3f Vector3f::operator-() const noexcept
+    ZEN_FORCEINLINE Vector3F Vector3F::operator-() const noexcept
     {
         return{ -_x, -_y, -_z };
     }
 
-    ZEN_FORCEINLINE Vector3f Vector3f::operator+(const Vector3f& v) const noexcept
+    ZEN_FORCEINLINE Vector3F Vector3F::operator+(const Vector3F& v) const noexcept
     {
         return{ _x + v._x, _y + v._y, _z + v._z };
     }
 
-    ZEN_FORCEINLINE Vector3f Vector3f::operator-(const Vector3f& v) const noexcept
+    ZEN_FORCEINLINE Vector3F Vector3F::operator-(const Vector3F& v) const noexcept
     {
         return{ _x - v._x, _y - v._y, _z - v._z };
     }
 
-    ZEN_FORCEINLINE Vector3f Vector3f::operator*(const Vector3f& v) const noexcept
+    ZEN_FORCEINLINE Vector3F Vector3F::operator*(const Vector3F& v) const noexcept
     {
         return{ _x * v._x, _y * v._y, _z * v._z };
     }
 
-    ZEN_FORCEINLINE Vector3f Vector3f::operator*(const float scale) const noexcept
+    ZEN_FORCEINLINE Vector3F Vector3F::operator*(const float scale) const noexcept
     {
         return{ _x * scale, _y * scale, _z * scale };
     }
 
-    ZEN_FORCEINLINE Vector3f Vector3f::operator/(const Vector3f& v) const noexcept
+    ZEN_FORCEINLINE Vector3F Vector3F::operator/(const Vector3F& v) const noexcept
     {
         return{ _x / v._x, _y / v._y, _z / v._z };
     }
 
-    ZEN_FORCEINLINE Vector3f Vector3f::operator/(float scale) const noexcept
+    ZEN_FORCEINLINE Vector3F Vector3F::operator/(float scale) const noexcept
     {
         const float inverseScale{ 1.0f / scale };
         return{ _x * inverseScale, _y * inverseScale, _z * inverseScale };
     }
 
-    ZEN_FORCEINLINE bool Vector3f::operator==(const Vector3f& v) const noexcept
+    ZEN_FORCEINLINE bool Vector3F::operator==(const Vector3F& v) const noexcept
     {
         return (_x == v._x && _y == v._y && _z == v._z);  // NOLINT(clang-diagnostic-float-equal)
     }
 
-    ZEN_FORCEINLINE bool Vector3f::operator!=(const Vector3f& v) const noexcept
+    ZEN_FORCEINLINE bool Vector3F::operator!=(const Vector3F& v) const noexcept
     {
         return (_x != v._x || _y != v._y || _z != v._z);  // NOLINT(clang-diagnostic-float-equal)
     }
 
-    ZEN_FORCEINLINE float& Vector3f::operator[](const int32_t index) noexcept
+    ZEN_FORCEINLINE float& Vector3F::operator[](const int32_t index) noexcept
     {
         ZEN_EXPECTS_MSG(0 <= index && index <= 2, u"IndexOutOfRange");
         if (index == 0) {
@@ -240,7 +240,7 @@ namespace zen
         }
     }
 
-    ZEN_FORCEINLINE float Vector3f::operator[](const int32_t index) const noexcept
+    ZEN_FORCEINLINE float Vector3F::operator[](const int32_t index) const noexcept
     {
         ZEN_EXPECTS_MSG(0 <= index && index <= 2, u"IndexOutOfRange");
         if (index == 0) {
@@ -254,7 +254,7 @@ namespace zen
         }
     }
 
-    ZEN_FORCEINLINE Vector3f& Vector3f::operator+=(const Vector3f& v) noexcept
+    ZEN_FORCEINLINE Vector3F& Vector3F::operator+=(const Vector3F& v) noexcept
     {
         _x += v._x;
         _y += v._y;
@@ -262,7 +262,7 @@ namespace zen
         return *this;
     }
 
-    ZEN_FORCEINLINE Vector3f& Vector3f::operator-=(const Vector3f& v) noexcept
+    ZEN_FORCEINLINE Vector3F& Vector3F::operator-=(const Vector3F& v) noexcept
     {
         _x -= v._x;
         _y -= v._y;
@@ -270,7 +270,7 @@ namespace zen
         return *this;
     }
 
-    ZEN_FORCEINLINE Vector3f& Vector3f::operator*=(const Vector3f& v) noexcept
+    ZEN_FORCEINLINE Vector3F& Vector3F::operator*=(const Vector3F& v) noexcept
     {
         _x *= v._x;
         _y *= v._y;
@@ -278,7 +278,7 @@ namespace zen
         return *this;
     }
 
-    ZEN_FORCEINLINE Vector3f& Vector3f::operator/=(const Vector3f& v) noexcept
+    ZEN_FORCEINLINE Vector3F& Vector3F::operator/=(const Vector3F& v) noexcept
     {
         _x /= v._x;
         _y /= v._y;
@@ -286,69 +286,69 @@ namespace zen
         return *this;
     }
 
-    ZEN_FORCEINLINE Vector3f operator*(const float scale, const Vector3f& v) noexcept
+    ZEN_FORCEINLINE Vector3F operator*(const float scale, const Vector3F& v) noexcept
     {
         return{ v * scale };
     }
 
 
-    ZEN_FORCEINLINE float Vector3f::getX() const noexcept
+    ZEN_FORCEINLINE float Vector3F::getX() const noexcept
     {
         return _x;
     }
 
-    ZEN_FORCEINLINE float Vector3f::getY() const noexcept
+    ZEN_FORCEINLINE float Vector3F::getY() const noexcept
     {
         return _y;
     }
 
-    ZEN_FORCEINLINE float Vector3f::getZ() const noexcept
+    ZEN_FORCEINLINE float Vector3F::getZ() const noexcept
     {
         return _z;
     }
 
-    ZEN_FORCEINLINE void Vector3f::setX(const float x) noexcept
+    ZEN_FORCEINLINE void Vector3F::setX(const float x) noexcept
     {
         _x = x;
     }
 
-    ZEN_FORCEINLINE void Vector3f::setY(const float y) noexcept
+    ZEN_FORCEINLINE void Vector3F::setY(const float y) noexcept
     {
         _y = y;
     }
 
-    ZEN_FORCEINLINE void Vector3f::setZ(const float z) noexcept
+    ZEN_FORCEINLINE void Vector3F::setZ(const float z) noexcept
     {
         _z = z;
     }
 
-    ZEN_FORCEINLINE float Vector3f::length() const noexcept
+    ZEN_FORCEINLINE float Vector3F::length() const noexcept
     {
         return std::sqrt(lengthSquared());
     }
 
-    ZEN_FORCEINLINE float Vector3f::lengthSquared() const noexcept
+    ZEN_FORCEINLINE float Vector3F::lengthSquared() const noexcept
     {
         return _x * _x + _y * _y + _z * _z;
     }
 
-    ZEN_FORCEINLINE Vector3f Vector3f::normalizedUnsafe() const noexcept
+    ZEN_FORCEINLINE Vector3F Vector3F::normalizedUnsafe() const noexcept
     {
         const float invLength{ 1.0f / length() };
         return *this * invLength;
     }
 
-    ZEN_FORCEINLINE float Vector3f::distance(const Vector3f& v1, const Vector3f& v2) noexcept
+    ZEN_FORCEINLINE float Vector3F::distance(const Vector3F& v1, const Vector3F& v2) noexcept
     {
         return (v2 - v1).length();
     }
 
-    ZEN_FORCEINLINE float Vector3f::distanceSquared(const Vector3f& v1, const Vector3f& v2) noexcept
+    ZEN_FORCEINLINE float Vector3F::distanceSquared(const Vector3F& v1, const Vector3F& v2) noexcept
     {
         return (v2 - v1).lengthSquared();
     }
 
-    ZEN_FORCEINLINE Vector3f Vector3f::cross(const Vector3f& v1, const Vector3f& v2) noexcept
+    ZEN_FORCEINLINE Vector3F Vector3F::cross(const Vector3F& v1, const Vector3F& v2) noexcept
     {
         return
         {
@@ -358,18 +358,18 @@ namespace zen
         };
     }
 
-    ZEN_FORCEINLINE float Vector3f::dot(const Vector3f& v1, const Vector3f& v2) noexcept
+    ZEN_FORCEINLINE float Vector3F::dot(const Vector3F& v1, const Vector3F& v2) noexcept
     {
         return v1._x * v2._x + v1._y * v2._y + v1._z * v2._z;
     }
 
-    ZEN_FORCEINLINE Vector3f Vector3f::reflect(const Vector3f& direction, const Vector3f& normal) noexcept
+    ZEN_FORCEINLINE Vector3F Vector3F::reflect(const Vector3F& direction, const Vector3F& normal) noexcept
     {
-        return direction - normal * Vector3f{ Vector3f::dot(normal, direction) * 2.0f };
+        return direction - normal * Vector3F{ Vector3F::dot(normal, direction) * 2.0f };
     }
 
-    ZEN_FORCEINLINE float Vector3f::angleBetween(const Vector3f& v1, const Vector3f& v2) noexcept
+    ZEN_FORCEINLINE float Vector3F::angleBetween(const Vector3F& v1, const Vector3F& v2) noexcept
     {
-        return std::acos(Vector3f::dot(v1, v2) / std::sqrt(v1.lengthSquared() * v2.lengthSquared()));
+        return std::acos(Vector3F::dot(v1, v2) / std::sqrt(v1.lengthSquared() * v2.lengthSquared()));
     }
 }

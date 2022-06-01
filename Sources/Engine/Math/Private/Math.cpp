@@ -4,19 +4,19 @@
 
 namespace zen
 {
-    const Vector3f Vector3f::zero{ 0.0f };
-    const Vector3f Vector3f::one{ 1.0f };
+    const Vector3F Vector3F::zero{ 0.0f };
+    const Vector3F Vector3F::one{ 1.0f };
 
-    const Vector4f Vector4f::zero{ 0.0f };
-    const Vector4f Vector4f::one{ 1.0f };
+    const Vector4F Vector4F::zero{ 0.0f };
+    const Vector4F Vector4F::one{ 1.0f };
 
-    Vector3f::Vector3f(std::span<const float, 3> span) noexcept
-        : Vector3f{ span[0], span[1], span[2] }
+    Vector3F::Vector3F(std::span<const float, 3> span) noexcept
+        : Vector3F{ span[0], span[1], span[2] }
     {
     }
 
-    Vector4f::Vector4f(std::span<const float, 4> span) noexcept
-        : Vector4f{ span[0], span[1], span[2], span[3] }
+    Vector4F::Vector4F(std::span<const float, 4> span) noexcept
+        : Vector4F{ span[0], span[1], span[2], span[3] }
     {
     }
 }

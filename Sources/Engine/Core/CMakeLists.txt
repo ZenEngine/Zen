@@ -88,3 +88,6 @@ target_include_directories(Core
 
 
 target_compile_features(Core PRIVATE cxx_std_20)
+
+include(ZenBuildUtility)
+create_filters(${CMAKE_CURRENT_SOURCE_DIR} ${PUBLIC_HEADERS} ${PRIVATE_SOURCES})
