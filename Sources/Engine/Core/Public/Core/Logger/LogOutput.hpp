@@ -4,6 +4,7 @@ namespace zen
 {
     class LogOutput
     {
+    public:
 
     };
 }

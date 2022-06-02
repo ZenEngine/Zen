@@ -31,8 +31,10 @@ set(PUBLIC_HEADERS
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Containers/String.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Containers/StringView.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Hash/XxHash.hpp"
+	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Logger/LogFormatter.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Logger/Logger.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Logger/LogOutput.hpp"
+	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Memory/MemoryUtils.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Memory/SharedPtr.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Memory/UniquePtr.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Misc/Assert.hpp"
@@ -96,3 +98,5 @@ target_compile_features(Core PRIVATE cxx_std_20)
 
 include(ZenBuildUtility)
 create_filters(${CMAKE_CURRENT_SOURCE_DIR} ${PUBLIC_HEADERS} ${PRIVATE_SOURCES})
+
+add_subdirectory(Tests)

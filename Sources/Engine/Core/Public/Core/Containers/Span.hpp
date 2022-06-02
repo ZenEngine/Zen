@@ -8,6 +8,11 @@ namespace zen
 {
     inline constexpr std::size_t dynamicExtent{ static_cast<std::size_t>(-1) };
 
+    namespace details
+    {
+
+    }
+
     template<typename ElementType, std::size_t Extent = dynamicExtent>
     class TSpan
     {
@@ -45,6 +50,60 @@ namespace zen
 
         [[nodiscard]]
         constexpr size_type getSizeBytes() const noexcept { return _size * sizeof(element_type); }
+
+        [[nodiscard]]
+        constexpr bool isEmpty() const noexcept { return getSize() == 0; }
+
+        [[nodiscard]]
+        constexpr reference front() const
+        {
+            ZEN_EXPECTS(!isEmpty());
+            return *getData();
+        }
+
+        [[nodiscard]]
+        constexpr reference back() const
+        {
+            ZEN_EXPECTS(!isEmpty());
+            return  *(getData() + (getSize() - 1));
+        }
+
+        [[nodiscard]]
+        constexpr pointer getData() const noexcept { return _ptr; }
+
+        [[nodiscard]]
+        constexpr iterator begin() const noexcept
+        {
+            return _ptr;
+        }
+
+        friend constexpr iterator begin(TSpan s) noexcept
+        {
+            return s.begin();
+        }
+
+        [[nodiscard]]
+        constexpr iterator end() const noexcept
+        {
+            return _ptr + _size;
+        }
+
+        friend constexpr iterator end(TSpan s) noexcept
+        {
+            return s.end();
+        }
+
+        [[nodiscard]]
+        constexpr reverse_iterator rbegin() const noexcept
+        {
+            return reverse_iterator(end());
+        }
+
+        [[nodiscard]]
+        constexpr reverse_iterator rend() const noexcept
+        {
+            return reverse_iterator(begin());
+        }
 
     private:
         pointer _ptr;

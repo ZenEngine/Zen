@@ -2,9 +2,11 @@
 
 #if ZEN_DEBUG
 #include <cassert>
+/** 事前条件 */
 #define ZEN_EXPECTS(expression) assert(expression)
 #define ZEN_EXPECTS_MSG(expression, message) assert(expression && message)
 
+/** 事後条件 */
 #define ZEN_ENSURES(expression) assert(expression)
 #define ZEN_ENSURES_MSG(expression, message) assert(expression && message)
 
