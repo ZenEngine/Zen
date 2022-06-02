@@ -27,9 +27,14 @@ set(PRIVATE_SOURCES
 )
 
 set(PUBLIC_HEADERS
+	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Containers/Span.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Containers/String.hpp"
+	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Containers/StringView.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Hash/XxHash.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Logger/Logger.hpp"
+	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Logger/LogOutput.hpp"
+	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Memory/SharedPtr.hpp"
+	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Memory/UniquePtr.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Misc/Assert.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Misc/Enviroment.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Platform/PlatformDefine.hpp"

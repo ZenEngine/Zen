@@ -53,3 +53,4 @@ namespace zen
 }
 
 #define ZEN_LOG(...)
+#define ZEN_LOG_INFO(...)
