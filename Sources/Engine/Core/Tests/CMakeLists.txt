@@ -5,7 +5,11 @@ enable_testing()
 add_executable(CoreTest)
 
 set(PRIVATE_SOURCES
-
+	"${CMAKE_CURRENT_SOURCE_DIR}/Containers/ArrayTest.cpp"
+	"${CMAKE_CURRENT_SOURCE_DIR}/Containers/StringTest.cpp"
+	"${CMAKE_CURRENT_SOURCE_DIR}/Containers/StringViewTest.cpp"
+	"${CMAKE_CURRENT_SOURCE_DIR}/Memory/SharedPtrTest.cpp"
+	"${CMAKE_CURRENT_SOURCE_DIR}/Memory/UniquePtrTest.cpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Span/SpanTest.cpp"
 )
 

@@ -27,6 +27,8 @@ set(PRIVATE_SOURCES
 )
 
 set(PUBLIC_HEADERS
+	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Containers/Detail/StringHelper.hpp"
+	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Containers/Array.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Containers/Span.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Containers/String.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Containers/StringView.hpp"
