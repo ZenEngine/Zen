@@ -41,6 +41,7 @@ set(PUBLIC_HEADERS
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Memory/UniquePtr.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Misc/Assert.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Misc/Enviroment.hpp"
+	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Misc/ScopeExit.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Platform/PlatformDefine.hpp"
 )
 
