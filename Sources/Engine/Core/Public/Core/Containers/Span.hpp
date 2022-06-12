@@ -8,11 +8,6 @@ namespace zen
 {
     inline constexpr std::size_t dynamicExtent{ static_cast<std::size_t>(-1) };
 
-    namespace details
-    {
-
-    }
-
     template<typename ElementType, std::size_t Extent = dynamicExtent>
     class TSpan
     {
