@@ -87,7 +87,7 @@ namespace zen
             // @third party code - BEGIN STL
             // Copyright (c) Microsoft Corporation.
             // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
-            constexpr const size_t find(
+            constexpr size_t find(
                 const char16_t* s1, size_t size1,
                 size_t pos,
                 const char16_t* s2, size_t size2) noexcept
