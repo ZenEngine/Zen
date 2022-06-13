@@ -105,7 +105,7 @@ namespace zen
         explicit TSharedPtr(U* ptr)
             requires(std::is_convertible_v<U*, element_type*>
             && sizeof(U) > 0
-            /*&& std::conditional_t<std::is_array_v<T>, detail::IsArrayDeletable<U>::type, detail::IsDeletable<U>::type>::value*/)
+            && std::conditional_t<std::is_array_v<T>, detail::IsArrayDeletable<U*>, detail::IsDeletable<U*>>::value)
             : _pointer{ ptr }
         {
             // @TODO
