@@ -63,7 +63,7 @@ namespace zen
         template<typename T, typename Deleter>
         struct TDetectUniquePtrType<T, Deleter, std::void_t<typename Deleter::pointer>>
         {
-            using type = Deleter::pointer;
+            using type = typename Deleter::pointer;
         };
     }
 
