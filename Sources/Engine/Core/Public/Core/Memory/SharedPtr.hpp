@@ -41,7 +41,7 @@ namespace zen
         template<ThreadPolicy Policy>
         struct TRefCounter
         {
-            using counter_type = RefCounterTypeSelector<Policy>::type;
+            using counter_type = typename RefCounterTypeSelector<Policy>::type;
 
             TRefCounter() noexcept = default;
             TRefCounter(const TRefCounter&) = delete;
