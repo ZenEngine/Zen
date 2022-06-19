@@ -27,6 +27,7 @@ set(PRIVATE_SOURCES
 
 set(PUBLIC_HEADERS
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Misc/Assert.hpp"
+	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Misc/EnumUtility.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Misc/Enviroment.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Hash/XxHash.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Platform/PlatformDefine.hpp"
