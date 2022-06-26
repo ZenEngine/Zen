@@ -1,4 +1,4 @@
-#include <Core/Memory/UniquePtr.hpp>
+#include <Core/Memory/Memory.hpp>
 #include <gtest/gtest.h>
 #include <memory>
 
