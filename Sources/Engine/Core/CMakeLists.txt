@@ -80,6 +80,7 @@ target_compile_options(Core
 
 find_package(xxHash CONFIG REQUIRED)
 find_package(fmt CONFIG REQUIRED)
+find_package(mimalloc CONFIG REQUIRED)
 
 target_link_libraries(Core
   PUBLIC
@@ -88,6 +89,8 @@ target_link_libraries(Core
 	#$<$<NOT:$<PLATFORM_ID:Windows>>:ICU::uc>
   PRIVATE
     fmt::fmt
+	mimalloc
+	mimalloc-static
 )
 
 target_include_directories(Core
