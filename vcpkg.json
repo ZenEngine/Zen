@@ -4,6 +4,7 @@
 	"dependencies": [
 		"xxhash",
 		"fmt",
-		"gtest"
+		"gtest",
+		"mimalloc"
 	]
 }
