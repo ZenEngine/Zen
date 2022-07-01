@@ -5,7 +5,7 @@ enable_testing()
 add_executable(MathTest)
 
 set(PRIVATE_SOURCES
-	"${CMAKE_CURRENT_SOURCE_DIR}/MathTestHelper.h"
+	"${CMAKE_CURRENT_SOURCE_DIR}/MathTestHelper.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Vector3Test.cpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Vector4Test.cpp"
 )

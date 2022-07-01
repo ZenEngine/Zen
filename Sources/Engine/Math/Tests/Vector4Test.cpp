@@ -1,4 +1,4 @@
-#include "MathTestHelper.h"
+#include "MathTestHelper.hpp"
 #include <gtest/gtest.h>
 
 // Based on .NET Runtime

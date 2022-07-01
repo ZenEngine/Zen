@@ -1,4 +1,4 @@
-#include "MathTestHelper.h"
+#include "MathTestHelper.hpp"
 #include <Core/Containers/Span.hpp>
 #include <gtest/gtest.h>
 
