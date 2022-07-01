@@ -563,7 +563,7 @@ namespace zen
         template<typename U, typename Deleter>
         void allocateInternal(U* pointer, Deleter deleter)
         {
-            std::unique_ptr<U> scopedTempOwner(pointer);
+            TUniquePtr<U> scopedTempOwner(pointer);
             _refCounter = new detail::TRefCounter<element_type, Policy, Deleter>(pointer, std::move(deleter));
             scopedTempOwner.release();
         }
