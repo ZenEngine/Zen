@@ -17,7 +17,7 @@ EXPECT_FLOAT_EQ(v1.getZ(), v2.getZ())
 EXPECT_FLOAT_EQ(v1.getX(), v2.getX()); \
 EXPECT_FLOAT_EQ(v1.getY(), v2.getY()); \
 EXPECT_FLOAT_EQ(v1.getZ(), v2.getZ()); \
-EXPECT_FLOAT_EQ(v1.w, v2.w)
+EXPECT_FLOAT_EQ(v1.getW(), v2.getW())
 
 #define EXPECT_MATRIX44_EQ(mat1, mat2) \
 EXPECT_VECTOR4_EQ(mat1.getXAxis(), mat2.getXAxis()); \
