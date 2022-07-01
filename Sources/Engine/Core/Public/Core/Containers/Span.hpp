@@ -100,6 +100,11 @@ namespace zen
             return reverse_iterator(begin());
         }
 
+        constexpr reference operator[](size_type i) const
+        {
+            ZEN_EXPECTS(i < getSize());
+            return *(getData() + i);
+        }
     private:
         pointer _ptr;
         size_type _size;

@@ -43,4 +43,3 @@ TEST(SharedPtrTest, Construct3)
     EXPECT_EQ(actual.getUseCount(), 1);
 }
 
-

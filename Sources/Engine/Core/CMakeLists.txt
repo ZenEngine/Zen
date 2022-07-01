@@ -36,6 +36,7 @@ set(PUBLIC_HEADERS
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Logger/LogFormatter.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Logger/Logger.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Logger/LogOutput.hpp"
+	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Memory/AllocatorTraits.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Memory/Memory.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Memory/MemoryUtils.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Core/Misc/Assert.hpp"

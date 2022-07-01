@@ -9,12 +9,6 @@
 
 namespace zen
 {
-    template<typename Allocator>
-    struct AllocatorTraits
-    {
-
-    };
-
     template<typename T>
     struct TDefaultDelete
     {
@@ -457,31 +451,49 @@ namespace zen
         {
             if constexpr (std::is_array_v<U>)
             {
-                // Newにしたとき、例外が起きてもメモリを解放するための仕組み。
-                TUniquePtr<U> scopedTempOwner{ ptr };
-                _refCounter = new detail::TRefCounter<element_type, Policy, TDefaultDelete<element_type[]>>(_pointer, TDefaultDelete<element_type[]>{});
-                // ここに到達しているということは、newに成功しているはずなので、所有権shared_ptrに返却する。
-                scopedTempOwner.release();
+                allocateInternal(_pointer, TDefaultDelete<element_type[]>{});
             }
             else
             {
-                TUniquePtr<U> scopedTempOwner{ ptr };
-                _refCounter = new detail::TRefCounter<element_type, Policy, TDefaultDelete<element_type>>(_pointer, TDefaultDelete<element_type>{});
-                scopedTempOwner.release();
+                allocateInternal(_pointer, TDefaultDelete<element_type>{});
             }
         }
 
         template<typename U, typename Deleter>
         TSharedPtr(U* ptr, Deleter deleter)
             requires(std::is_move_constructible_v<Deleter>
-            && detail::IsSharedPointerConvertable<U, T>::value
+        && detail::IsSharedPointerConvertable<U, T>::value
             && detail::CanCallFunctionObject<Deleter&, U*&>::value)
             : _pointer{ ptr }
             , _refCounter{ nullptr }
         {
-            TUniquePtr<U> scopedTempOwner{ ptr };
-            _refCounter = new detail::TRefCounter<element_type, Policy, Deleter>(_pointer, std::move(deleter));
-            scopedTempOwner.release();
+            allocateInternal(_pointer, deleter);
+        }
+
+        template<typename Deleter>
+            requires(std::is_move_constructible_v<Deleter>
+            && detail::CanCallFunctionObject<Deleter&, std::nullptr_t&>::value)
+            TSharedPtr(std::nullptr_t pointer, Deleter deleter)
+        {
+            //@TODO
+        }
+
+        template<typename Deleter, typename Allocator>
+            requires(std::is_move_constructible_v<Deleter>
+        && detail::CanCallFunctionObject<Deleter&, std::nullptr_t&>::value)
+            TSharedPtr(std::nullptr_t pointer, Deleter deleter, Allocator allocator)
+        {
+            //@TODO
+        }
+
+        TSharedPtr(const TSharedPtr& other) noexcept
+            : _pointer{ other._pointer }
+            , _refCounter{ other._refCounter }
+        {
+            if (_refCounter)
+            {
+                _refCounter->addReference();
+            }
         }
 
         TSharedPtr(TSharedPtr<T>&& other) noexcept
@@ -548,6 +560,14 @@ namespace zen
         }
 
     private:
+        template<typename U, typename Deleter>
+        void allocateInternal(U* pointer, Deleter deleter)
+        {
+            std::unique_ptr<U> scopedTempOwner(pointer);
+            _refCounter = new detail::TRefCounter<element_type, Policy, Deleter>(pointer, std::move(deleter));
+            scopedTempOwner.release();
+        }
+
         template<typename U, typename Deleter, typename Allocator>
         void allocateInternal()
         {
