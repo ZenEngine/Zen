@@ -113,6 +113,11 @@ namespace zen
         [[nodiscard]] static float distanceSquared(const Vector3& v1, const Vector3& v2) noexcept;
 
         /**
+        * @brief 2つのベクトルのリニア補完します。
+        */
+        [[nodiscard]] static Vector3 lerp(const Vector3& v1, const Vector3& v2, float t) noexcept;
+
+        /**
         * @brief 外積を計算します。
         *
         * @param [in] v1 一つ目のベクトル
@@ -344,6 +349,11 @@ namespace zen
     ZEN_FORCEINLINE float Vector3::distanceSquared(const Vector3& v1, const Vector3& v2) noexcept
     {
         return (v2 - v1).lengthSquared();
+    }
+
+    ZEN_FORCEINLINE Vector3 Vector3::lerp(const Vector3& v1, const Vector3& v2, float t) noexcept
+    {
+        return Vector3(v1 * (1.0f - t)) + (v2 * t);
     }
 
     ZEN_FORCEINLINE Vector3 Vector3::cross(const Vector3& v1, const Vector3& v2) noexcept

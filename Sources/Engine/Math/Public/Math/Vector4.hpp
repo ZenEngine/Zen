@@ -1,5 +1,6 @@
 #pragma once
 #include <Core/Platform/PlatformDefine.hpp>
+#include <Math/Vector3.hpp>
 #include <xmmintrin.h>
 #include <smmintrin.h>
 #include <cstdint>
@@ -11,7 +12,6 @@ namespace zen
     template <class ElementType, size_t Extent>
     class TSpan;
 
-    struct Vector3;
     struct alignas(16) Vector4 final
     {
     public:
@@ -38,7 +38,7 @@ namespace zen
         * @param[in] w W成分
         */
         Vector4(float x, float y, float z, float w) noexcept;
-
+        Vector4(const Vector3& v, float w) noexcept;
         Vector4(TSpan<const float, 4> span) noexcept;
 
         Vector4(const Vector4& other) noexcept = default;
@@ -85,6 +85,12 @@ namespace zen
         void setW(float w) noexcept;
 
         /**
+        * @brief 2つのベクトルのリニア補完します。
+        */
+        [[nodiscard]]
+        static Vector4 lerp(const Vector4& v1, const Vector4& v2, float t) noexcept;
+
+        /**
         * @brief 内積を計算します。
         *
         * @param [in] v1 一つ目のベクトル
@@ -126,6 +132,11 @@ namespace zen
     {
     }
 
+    ZEN_FORCEINLINE Vector4::Vector4(const Vector3& v, const float w) noexcept
+        : Vector4{ v.getX(), v.getY(), v.getZ(), w }
+    {
+    }
+
     ZEN_FORCEINLINE Vector4 Vector4::operator-() const noexcept
     {
         return Vector4{ _mm_sub_ps(_mm_setzero_ps(), _value) };
@@ -163,12 +174,12 @@ namespace zen
 
     ZEN_FORCEINLINE bool Vector4::operator==(const Vector4& v) const noexcept
     {
-        return (_mm_movemask_ps(_mm_cmpeq_ps(_value, v._value)) == 0);
+        return (_mm_movemask_ps(_mm_cmpneq_ps(_value, v._value)) == 0);
     }
 
     ZEN_FORCEINLINE bool Vector4::operator!=(const Vector4& v) const noexcept
     {
-        return (_mm_movemask_ps(_mm_cmpneq_ps(_value, v._value)) == 0);
+        return (_mm_movemask_ps(_mm_cmpneq_ps(_value, v._value)) != 0);
     }
 
     ZEN_FORCEINLINE float& Vector4::operator[](const int32_t index) noexcept
@@ -250,6 +261,11 @@ namespace zen
     ZEN_FORCEINLINE void Vector4::setW(const float w) noexcept
     {
         _f32[3] = w;
+    }
+
+    ZEN_FORCEINLINE Vector4 Vector4::lerp(const Vector4& v1, const Vector4& v2, const float t) noexcept
+    {
+        return Vector4(v1 * (1.0f - t)) + (v2 * t);
     }
 
     ZEN_FORCEINLINE float Vector4::dot(const Vector4& v1, const Vector4& v2) noexcept

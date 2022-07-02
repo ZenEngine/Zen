@@ -7,7 +7,6 @@
 
 using namespace zen;
 
-#if 0
 TEST(Vector4Test, Constructor)
 {
 	const float x{ 1.0f };
@@ -17,12 +16,14 @@ TEST(Vector4Test, Constructor)
 
 	const Vector4 target{ x, y, z, w };
 
-	EXPECT_FLOAT_EQ(target.x, x);
-	EXPECT_FLOAT_EQ(target.y, y);
-	EXPECT_FLOAT_EQ(target.z, z);
-	EXPECT_FLOAT_EQ(target.w, w);
+	EXPECT_FLOAT_EQ(target.getX(), x);
+	EXPECT_FLOAT_EQ(target.getY(), y);
+	EXPECT_FLOAT_EQ(target.getZ(), z);
+	EXPECT_FLOAT_EQ(target.getW(), w);
 }
 
+// @TODO Iml Vec2
+/*
 TEST(Vector4Test, Constructor1)
 {
 	const Vector2 a{ 1.0f, 2.0f };
@@ -31,10 +32,10 @@ TEST(Vector4Test, Constructor1)
 
 	const Vector4 target{ a, z, w };
 
-	EXPECT_FLOAT_EQ(target.x, a.x);
-	EXPECT_FLOAT_EQ(target.y, a.y);
-	EXPECT_FLOAT_EQ(target.z, z);
-	EXPECT_FLOAT_EQ(target.w, w);
+	EXPECT_FLOAT_EQ(target.getX(), a.getX());
+	EXPECT_FLOAT_EQ(target.getY(), a.y);
+	EXPECT_FLOAT_EQ(target.getZ(), z);
+	EXPECT_FLOAT_EQ(target.getW(), w);
 }
 
 TEST(Vector4Test, Constructor3)
@@ -44,20 +45,21 @@ TEST(Vector4Test, Constructor3)
 
 	const Vector4 target{ a, w };
 
-	EXPECT_FLOAT_EQ(target.x, a.x);
-	EXPECT_FLOAT_EQ(target.y, a.y);
-	EXPECT_FLOAT_EQ(target.z, a.z);
-	EXPECT_FLOAT_EQ(target.w, w);
+	EXPECT_FLOAT_EQ(target.getX(), a.getX());
+	EXPECT_FLOAT_EQ(target.getY(), a.getY());
+	EXPECT_FLOAT_EQ(target.getZ(), a.getZ());
+	EXPECT_FLOAT_EQ(target.getW(), w);
 }
+*/
 
 TEST(Vector4Test, Constructor4)
 {
 	const Vector4 a{};
 
-	EXPECT_FLOAT_EQ(0.0f, a.x);
-	EXPECT_FLOAT_EQ(0.0f, a.y);
-	EXPECT_FLOAT_EQ(0.0f, a.z);
-	EXPECT_FLOAT_EQ(0.0f, a.w);
+	EXPECT_FLOAT_EQ(0.0f, a.getX());
+	EXPECT_FLOAT_EQ(0.0f, a.getY());
+	EXPECT_FLOAT_EQ(0.0f, a.getZ());
+	EXPECT_FLOAT_EQ(0.0f, a.getW());
 }
 
 TEST(Vector4Test, Constructor5)
@@ -70,10 +72,10 @@ TEST(Vector4Test, Constructor5)
 		std::numeric_limits<float>::epsilon()
 	};
 
-	EXPECT_TRUE(std::isnan(a.x));
-	EXPECT_FLOAT_EQ(std::numeric_limits<float>::max(), a.y);
-	EXPECT_FLOAT_EQ(std::numeric_limits<float>::infinity(), a.z);
-	EXPECT_FLOAT_EQ(std::numeric_limits<float>::epsilon(), a.w);
+	EXPECT_TRUE(std::isnan(a.getX()));
+	EXPECT_FLOAT_EQ(std::numeric_limits<float>::max(), a.getY());
+	EXPECT_FLOAT_EQ(std::numeric_limits<float>::infinity(), a.getZ());
+	EXPECT_FLOAT_EQ(std::numeric_limits<float>::epsilon(), a.getW());
 }
 
 TEST(Vector4Test, Constructor6)
@@ -115,80 +117,6 @@ TEST(Vector4Test, Dot1)
 	const float actual{ Vector4::dot(d, e) };
 	EXPECT_NEAR(actual, 0.0f, 1e-5);
 	
-}
-
-TEST(Vector4Test, Length)
-{
-	const Vector3 a{ 1.0f, 2.0f, 3.0f };
-	const float w{ 4.0f };
-	const Vector4 target{ a, w };
-
-	const float expected{ math::sqrt(30.0f) };
-	const float actual{ target.length() };
-
-	EXPECT_FLOAT_EQ(actual, expected);
-}
-
-TEST(Vector4Test, Length1)
-{
-	const Vector4 target{};
-
-	const float expected{ 0.0f };
-	const float actual{ target.length() };
-
-	EXPECT_FLOAT_EQ(actual, expected);
-}
-
-TEST(Vector4Test, LengthSquared)
-{
-	const Vector3 a{ 1.0f, 2.0f, 3.0f };
-	const float w{ 4.0f };
-	const Vector4 target{a, w};
-
-	const float expected{ 30.0f };
-	const float actual{ target.lengthSquared() };
-
-	EXPECT_FLOAT_EQ(actual, expected);
-}
-
-TEST(Vector4Test, Min)
-{
-	const Vector4 a{ -1.0f, 4.0f, -3.0f, 1000.0f };
-	const Vector4 b{ 2.0f, 1.0f, -1.0f, 0.0f };
-
-	const Vector4 expected{ -1.0f, 1.0f, -3.0f, 0.0f };
-	const Vector4 actual{ Vector4::min(a, b) };
-
-	EXPECT_VECTOR4_EQ(actual, expected);
-}
-
-TEST(Vector4Test, Max)
-{
-	const Vector4 a{ -1.0f, 4.0f, -3.0f, 1000.0f };
-	const Vector4 b{ 2.0f, 1.0f, -1.0f, 0.0f };
-
-	const Vector4 expected{ 2.0f, 4.0f, -1.0f, 1000.0f };
-	const Vector4 actual{ Vector4::max(a, b) };
-
-	EXPECT_VECTOR4_EQ(actual, expected);
-}
-
-TEST(Vector4Test, MinMaxCodeCoverage)
-{
-	const Vector4 min{ Vector4::zero };
-	const Vector4 max{ Vector4::one };
-
-	Vector4 actual{ Vector4::min(min, max) };
-	EXPECT_VECTOR4_EQ(actual, min);
-
-	actual = Vector4::min(max, min);
-	EXPECT_VECTOR4_EQ(actual, min);
-
-	actual = Vector4::max(max, max);
-	EXPECT_VECTOR4_EQ(actual, max);
-
-	actual = Vector4::max(max, min);
-	EXPECT_VECTOR4_EQ(actual, max);
 }
 
 TEST(Vector4Test, Lerp)
@@ -265,8 +193,8 @@ TEST(Vector4Test, Lerp5)
 
 	const Vector4 actual{ Vector4::lerp(a, b, t) };
 
-	EXPECT_FLOAT_EQ(actual.x, std::numeric_limits<float>::infinity());
-	EXPECT_FLOAT_EQ(actual.y, -std::numeric_limits<float>::infinity());
+	EXPECT_FLOAT_EQ(actual.getX(), std::numeric_limits<float>::infinity());
+	EXPECT_FLOAT_EQ(actual.getY(), -std::numeric_limits<float>::infinity());
 }
 
 TEST(Vector4Test, Lerp6)
@@ -306,44 +234,6 @@ TEST(Vector4Test, Lerp8)
 	const Vector4 actual{ Vector4::lerp(a, b, t) };
 
 	EXPECT_VECTOR4_EQ(actual, expected);
-}
-
-TEST(Vector4Test, Normalize)
-{
-	const Vector4 a{ 1.0f, 2.0f, 3.0f, 4.0f };
-
-	const Vector4 expected
-	{
-		0.1825741858350553711523232609336f,
-		0.3651483716701107423046465218672f,
-		0.5477225575051661134569697828008f,
-		0.7302967433402214846092930437344f
-	};
-
-
-	const Vector4 actual{ a.normalizedUnsafe() };
-
-	EXPECT_VECTOR4_EQ(actual, expected);
-}
-
-TEST(Vector4Test, Normalize1)
-{
-	const Vector4 a{ 1.0f, 0.0f, 0.0f, 0.0f };
-
-	const Vector4 expected{ 1.0f, 0.0f, 0.0f, 0.0f };
-	const Vector4 actual{ a.normalizedUnsafe() };
-
-	EXPECT_VECTOR4_EQ(actual, expected);
-}
-
-TEST(Vector4Test, Normalize2)
-{
-	const Vector4 a{ 0.0f, 0.0f, 0.0f, 0.0f };
-
-	const Vector4 expected{ 0.0f, 0.0f, 0.0f, 0.0f };
-	const Vector4 actual{ a.normalizedUnsafe() };
-
-	EXPECT_TRUE(std::isnan(actual.x) && std::isnan(actual.y)&& std::isnan(actual.z)&& std::isnan(actual.w));
 }
 
 TEST(Vector4Test, UnaryNegation)
@@ -433,10 +323,10 @@ TEST(Vector4Test, Division2)
 
 	const Vector4 actual{ a / div };
 
-	EXPECT_FLOAT_EQ(-std::numeric_limits<float>::infinity(), actual.x);
-	EXPECT_FLOAT_EQ(std::numeric_limits<float>::infinity(), actual.y);
-	EXPECT_FLOAT_EQ(std::numeric_limits<float>::infinity(), actual.z);
-	EXPECT_TRUE(std::isnan(actual.w));
+	EXPECT_FLOAT_EQ(-std::numeric_limits<float>::infinity(), actual.getX());
+	EXPECT_FLOAT_EQ(std::numeric_limits<float>::infinity(), actual.getY());
+	EXPECT_FLOAT_EQ(std::numeric_limits<float>::infinity(), actual.getZ());
+	EXPECT_TRUE(std::isnan(actual.getW()));
 }
 
 TEST(Vector4Test, Division3)
@@ -446,10 +336,10 @@ TEST(Vector4Test, Division3)
 
 	const Vector4 actual{ a / b };
 
-	EXPECT_FLOAT_EQ(std::numeric_limits<float>::infinity(), actual.x);
-	EXPECT_FLOAT_EQ(-std::numeric_limits<float>::infinity(), actual.y);
-	EXPECT_FLOAT_EQ(-std::numeric_limits<float>::infinity(), actual.z);
-	EXPECT_FLOAT_EQ(-std::numeric_limits<float>::infinity(), actual.w);
+	EXPECT_FLOAT_EQ(std::numeric_limits<float>::infinity(), actual.getX());
+	EXPECT_FLOAT_EQ(-std::numeric_limits<float>::infinity(), actual.getY());
+	EXPECT_FLOAT_EQ(-std::numeric_limits<float>::infinity(), actual.getZ());
+	EXPECT_FLOAT_EQ(-std::numeric_limits<float>::infinity(), actual.getW());
 }
 
 TEST(Vector4Test, Addition)
@@ -492,7 +382,7 @@ TEST(Vector4Test, Equals)
 	Vector4 b{ 1.0f, 2.0f, 3.0f, 4.0f };
 
 	EXPECT_EQ(a, b);
-	b.x = 10.0f;
+	b.setX(10.0f);
 	
 	EXPECT_NE(a, b);
 }
@@ -515,7 +405,7 @@ TEST(Vector4Test, Inequality)
 
 	EXPECT_FALSE(actual);
 
-	b.x = 10.0f;
+	b.setX(10.0f);
 	actual = a != b;
 
 	EXPECT_TRUE(actual);
@@ -529,29 +419,26 @@ TEST(Vector4Test, Sizeof)
 TEST(Vector4Test, SetFields)
 {
 	Vector4 v3{ 4.0f, 5.0f, 6.0f, 7.0f };
-	v3.x = 1.0f;
-	v3.y = 2.0f;
-	v3.z = 3.0f;
-	v3.w = 4.0f;
+	v3.setX(1.0f);
+	v3.setY(2.0f);
+	v3.setZ(3.0f);
+	v3.setW(4.0f);
 
-	EXPECT_FLOAT_EQ(v3.x, 1.0f);
-	EXPECT_FLOAT_EQ(v3.y, 2.0f);
-	EXPECT_FLOAT_EQ(v3.z, 3.0f);
-	EXPECT_FLOAT_EQ(v3.w, 4.0f);
+	EXPECT_FLOAT_EQ(v3.getX(), 1.0f);
+	EXPECT_FLOAT_EQ(v3.getY(), 2.0f);
+	EXPECT_FLOAT_EQ(v3.getZ(), 3.0f);
+	EXPECT_FLOAT_EQ(v3.getW(), 4.0f);
 
 	Vector4 v4{ v3 };
-	v4.y = 0.5f;
-	v4.z = 2.2f;
-	v4.w = 3.5f;
+	v4.setY(0.5f);
+	v4.setZ(2.2f);
+	v4.setW(3.5f);
 
-	const float t{ 0.0f };
-
-	EXPECT_FLOAT_EQ(v4.x, 1.0f);
-	EXPECT_FLOAT_EQ(v4.y, 0.5f);
-	EXPECT_FLOAT_EQ(v4.z, 2.2f);
-	EXPECT_FLOAT_EQ(v4.w, 3.5f);
-	EXPECT_FLOAT_EQ(v3.y, 2.0f);
+	EXPECT_FLOAT_EQ(v4.getX(), 1.0f);
+	EXPECT_FLOAT_EQ(v4.getY(), 0.5f);
+	EXPECT_FLOAT_EQ(v4.getZ(), 2.2f);
+	EXPECT_FLOAT_EQ(v4.getW(), 3.5f);
+	EXPECT_FLOAT_EQ(v3.getY(), 2.0f);
 }
 
-#endif
 // @third party code - End .NET Runtime

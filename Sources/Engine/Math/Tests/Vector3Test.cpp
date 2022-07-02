@@ -1,6 +1,7 @@
 #include "MathTestHelper.hpp"
 #include <Core/Containers/Span.hpp>
 #include <gtest/gtest.h>
+#include <cmath>
 
 // Based on .NET Runtime
 // https://github.com/dotnet/runtime
@@ -33,8 +34,7 @@ TEST(Vector3Test, ConstructValues)
 	EXPECT_FLOAT_EQ(v.getZ(), 3.0f);
 }
 
-// @TODO: 未対応。
-#if 0
+
 TEST(Vector3Test, ConstructFromSpan)
 {
 
@@ -67,7 +67,7 @@ TEST(Vector3Test, Distance)
 	const Vector3 a{ 1.0f, 2.0f, 3.0f };
 	const Vector3 b{ 4.0f, 5.0f, 6.0f };
 
-	const float expected{ math::sqrt(27) };
+	const float expected{ std::sqrtf(27.0f) };
 	const float actual{ Vector3::distance(a, b) };
 
 	EXPECT_FLOAT_EQ(actual, expected);
@@ -126,7 +126,7 @@ TEST(Vector3Test, Length)
 	const Vector3 b{ 2.5f, 3, 1.5f };
 	const Vector3 c{ Vector3::cross(a, b) };
 
-	const float expected{ math::sqrt(14.0f) };
+	const float expected{ std::sqrt(14.0f) };
 	const float actual1{ a.length() };
 
 	EXPECT_FLOAT_EQ(actual1, expected);
@@ -150,48 +150,6 @@ TEST(Vector3Test, LengthSquared)
 	const float actual1{ a.lengthSquared() };
 
 	EXPECT_FLOAT_EQ(actual1, expected);
-}
-
-TEST(Vector3Test, Min)
-{
-	const Vector3 a{ -1.0f, 4.0f, -3.0f };
-	const Vector3 b{ 2.0f, 1.0f, -1.0f };
-
-
-	const Vector3 expected{ -1.0f, 1.0f, -3.0f };
-	const Vector3 actual{ Vector3::min(a, b) };
-
-	EXPECT_VECTOR3_EQ(actual, expected);
-}
-
-TEST(Vector3Test, Max)
-{
-	const Vector3 a{ -1.0f, 4.0f, -3.0f };
-	const Vector3 b{ 2.0f, 1.0f, -1.0f };
-
-
-	const Vector3 expected{ 2.0f, 4.0f, -1.0f };
-	const Vector3 actual{ Vector3::max(a, b) };
-	
-	EXPECT_VECTOR3_EQ(actual, expected);
-}
-
-TEST(Vector3Test, MinMaxCodeCoverage)
-{
-	const Vector3 min{ Vector3::zero };
-	const Vector3 max{ Vector3::one };
-
-	Vector3 actual{ Vector3::min(min, max) };
-	EXPECT_VECTOR3_EQ(actual, min);
-
-	actual = Vector3::min(max, min);
-	EXPECT_VECTOR3_EQ(actual, min);
-
-	actual = Vector3::max(max, max);
-	EXPECT_VECTOR3_EQ(actual, max);
-
-	actual = Vector3::max(max, min);
-	EXPECT_VECTOR3_EQ(actual, max);
 }
 
 TEST(Vector3Test, Lerp)
@@ -267,8 +225,8 @@ TEST(Vector3Test, Lerp5)
 	const float t{ 0.408f };
 
 	const Vector3 actual{ Vector3::lerp(a, b, t) };
-	EXPECT_FLOAT_EQ(actual.x, std::numeric_limits<float>::infinity());
-	EXPECT_FLOAT_EQ(actual.y, -std::numeric_limits<float>::infinity());
+	EXPECT_FLOAT_EQ(actual.getX(), std::numeric_limits<float>::infinity());
+	EXPECT_FLOAT_EQ(actual.getY(), -std::numeric_limits<float>::infinity());
 }
 
 TEST(Vector3Test, Lerp6)
@@ -316,7 +274,7 @@ TEST(Vector3Test, Reflect)
 	const Vector3 a{ Vector3(1.0f, 1.0f, 1.0f).normalizedUnsafe() };
 	Vector3 n{ 0.0f, 1.0f, 0.0f };
 
-	Vector3 expected{ a.x, -a.y, a.z };
+	Vector3 expected{ a.getX(), -a.getY(), a.getZ()};
 	Vector3 actual{ Vector3::reflect(a, n) };
 
 	EXPECT_VECTOR3_EQ(actual, expected);
@@ -324,7 +282,7 @@ TEST(Vector3Test, Reflect)
 	// XY-Plane
 	n = Vector3{ 0.0f, 0.0f, 1.0f };
 
-	expected = Vector3{ a.x, a.y, -a.z };
+	expected = Vector3{ a.getX(), a.getY(), -a.getZ() };
 	actual = Vector3::reflect(a, n);
 
 	EXPECT_VECTOR3_EQ(actual, expected);
@@ -332,7 +290,7 @@ TEST(Vector3Test, Reflect)
 	// YZ-Plane
 	n = Vector3{ 1.0f, 0.0f, 0.0f };
 
-	expected = Vector3{ -a.x, a.y, a.z };
+	expected = Vector3{ -a.getX(), a.getY(), a.getZ() };
 	actual = Vector3::reflect(a, n);
 
 	EXPECT_VECTOR3_EQ(actual, expected);
@@ -410,9 +368,9 @@ TEST(Vector3Test, Normalize2)
 	const Vector3 expected{ 0.0f, 0.0f, 0.0f };
 
 	const Vector3 actual{ a.normalizedUnsafe() };
-	EXPECT_TRUE(std::isnan(actual.x));
-	EXPECT_TRUE(std::isnan(actual.y));
-	EXPECT_TRUE(std::isnan(actual.z));
+	EXPECT_TRUE(std::isnan(actual.getX()));
+	EXPECT_TRUE(std::isnan(actual.getY()));
+	EXPECT_TRUE(std::isnan(actual.getZ()));
 }
 
 TEST(Vector3Test, UnaryNegation)
@@ -429,12 +387,12 @@ TEST(Vector3Test, UnaryNegation1)
 	const Vector3 a{ -Vector3{ std::numeric_limits<float>::quiet_NaN(), std::numeric_limits<float>::infinity(), -std::numeric_limits<float>::infinity()} };
 	const Vector3 b{ -Vector3{0.0f, 0.0f, 0.0f} };
 
-	EXPECT_FLOAT_EQ(std::numeric_limits<float>::quiet_NaN(), a.x);
-	EXPECT_FLOAT_EQ(-std::numeric_limits<float>::infinity(), a.y);
-	EXPECT_FLOAT_EQ(std::numeric_limits<float>::infinity(), a.z);
-	EXPECT_FLOAT_EQ(0.0f, b.x);
-	EXPECT_FLOAT_EQ(0.0f, b.y);
-	EXPECT_FLOAT_EQ(0.0f, b.z);
+	EXPECT_FLOAT_EQ(std::numeric_limits<float>::quiet_NaN(), a.getX());
+	EXPECT_FLOAT_EQ(-std::numeric_limits<float>::infinity(), a.getY());
+	EXPECT_FLOAT_EQ(std::numeric_limits<float>::infinity(), a.getZ());
+	EXPECT_FLOAT_EQ(0.0f, b.getX());
+	EXPECT_FLOAT_EQ(0.0f, b.getY());
+	EXPECT_FLOAT_EQ(0.0f, b.getZ());
 }
 
 TEST(Vector3Test, Substraction)
@@ -497,7 +455,7 @@ TEST(Vector3Test, Inequality)
 	bool actual{ a != b };
 	EXPECT_FALSE(actual);
 
-	b.x = 10.0f;
+    b.setX(10.0f);
 	actual = a != b;
 	EXPECT_TRUE(actual);
 }
@@ -510,7 +468,7 @@ TEST(Vector3Test, Equality)
 	bool actual{ a == b };
 	EXPECT_TRUE(actual);
 
-	b.x = 10.0f;
+    b.setX(10.0f);
 	actual = a == b;
 	EXPECT_FALSE(actual);
 }
@@ -535,29 +493,29 @@ TEST(Vector3Test, Sizeof)
 TEST(Vector3Test, SetFields)
 {
 	Vector3 v3{ 4.0f, 5.0f, 6.0f };
-	v3.x = 1.0f;
-	v3.y = 2.0f;
-	v3.z = 3.0f;
+	v3.setX(1.0f);
+	v3.setY(2.0f);
+	v3.setZ(3.0f);
 
-	EXPECT_FLOAT_EQ(v3.x, 1.0f);
-	EXPECT_FLOAT_EQ(v3.y, 2.0f);
-	EXPECT_FLOAT_EQ(v3.z, 3.0f);
+	EXPECT_FLOAT_EQ(v3.getX(), 1.0f);
+	EXPECT_FLOAT_EQ(v3.getY(), 2.0f);
+	EXPECT_FLOAT_EQ(v3.getZ(), 3.0f);
 
 	Vector3 v4{ v3 };
-	v4.y = 0.5f;
-	v4.z = 2.2f;
+	v4.setY(0.5f);
+	v4.setZ(2.2f);
 
-	EXPECT_FLOAT_EQ(v4.x, 1.0f);
-	EXPECT_FLOAT_EQ(v4.y, 0.5f);
-	EXPECT_FLOAT_EQ(v4.z, 2.2f);
-	EXPECT_FLOAT_EQ(v3.y, 2.0f);
+	EXPECT_FLOAT_EQ(v4.getX(), 1.0f);
+	EXPECT_FLOAT_EQ(v4.getY(), 0.5f);
+	EXPECT_FLOAT_EQ(v4.getZ(), 2.2f);
+	EXPECT_FLOAT_EQ(v3.getY(), 2.0f);
 
 	
 	const Vector3 before{ 1.0f, 2.0f, 3.0f };
 	Vector3 after{ before };
-	after.x = 500.0f;
+	after.setX(500.0f);
 
 	EXPECT_NE(before, after);
 }
-#endif
+
 // @third party code - End .NET Runtime
