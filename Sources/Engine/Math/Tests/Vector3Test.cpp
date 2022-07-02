@@ -67,7 +67,7 @@ TEST(Vector3Test, Distance)
 	const Vector3 a{ 1.0f, 2.0f, 3.0f };
 	const Vector3 b{ 4.0f, 5.0f, 6.0f };
 
-	const float expected{ std::sqrtf(27.0f) };
+	const float expected{ std::sqrt(27.0f) };
 	const float actual{ Vector3::distance(a, b) };
 
 	EXPECT_FLOAT_EQ(actual, expected);

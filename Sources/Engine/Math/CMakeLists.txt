@@ -32,9 +32,11 @@ target_sources(Math
 target_compile_options(Math
 	PUBLIC
 		$<$<CXX_COMPILER_ID:MSVC>:/wd4251>
+		$<$<CXX_COMPILER_ID:GNU>:-msse4.1>
 	PRIVATE 
 		$<$<CXX_COMPILER_ID:MSVC>:/W4 /utf-8>
 		$<$<CXX_COMPILER_ID:Clang>:-Wall -pedantic -Werror -Wextra -Wno-unused-parameter -fsigned-char>
+		$<$<CXX_COMPILER_ID:GNU>:-Wall -pedantic -Wextra>
 	)
 
 target_include_directories(Math
