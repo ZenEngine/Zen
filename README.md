@@ -19,6 +19,9 @@ git clone https://github.com/ZenEngine/Zen.git
 
 ### Linux
 
+```
+apt-get install autoconf
+```
 ## Documentation
 
 - [API Reference](https://zenengine.github.io/Zen/)

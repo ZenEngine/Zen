@@ -46,3 +46,6 @@ set_target_properties(Launch
 	)
 
 target_compile_features(Launch PRIVATE cxx_std_17)
+
+include(ZenBuildUtility)
+create_filters(${CMAKE_CURRENT_SOURCE_DIR} ${PUBLIC_HEADERS} ${PRIVATE_SOURCES})

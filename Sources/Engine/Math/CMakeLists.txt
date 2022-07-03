@@ -7,6 +7,7 @@ set(PRIVATE_SOURCES
 )
 
 set(PUBLIC_HEADERS
+	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Math/Math.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Math/Vector3.hpp"
 	"${CMAKE_CURRENT_SOURCE_DIR}/Public/Math/Vector4.hpp"
 )
@@ -31,9 +32,11 @@ target_sources(Math
 target_compile_options(Math
 	PUBLIC
 		$<$<CXX_COMPILER_ID:MSVC>:/wd4251>
+		$<$<OR:$<CXX_COMPILER_ID:GNU>,$<CXX_COMPILER_ID:Clang>>:-msse4.1>
 	PRIVATE 
 		$<$<CXX_COMPILER_ID:MSVC>:/W4 /utf-8>
 		$<$<CXX_COMPILER_ID:Clang>:-Wall -pedantic -Werror -Wextra -Wno-unused-parameter -fsigned-char>
+		$<$<CXX_COMPILER_ID:GNU>:-Wall -pedantic -Wextra>
 	)
 
 target_include_directories(Math
@@ -45,3 +48,8 @@ target_link_libraries(Math
    PUBLIC
        Core
 )
+
+include(ZenBuildUtility)
+create_filters(${CMAKE_CURRENT_SOURCE_DIR} ${PUBLIC_HEADERS} ${PRIVATE_SOURCES})
+
+add_subdirectory(Tests)

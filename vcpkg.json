@@ -2,6 +2,9 @@
 	"name": "zen",
 	"version-string": "0.1.0",
 	"dependencies": [
-		"xxhash"
+		"xxhash",
+		"fmt",
+		"gtest",
+		"mimalloc"
 	]
 }
