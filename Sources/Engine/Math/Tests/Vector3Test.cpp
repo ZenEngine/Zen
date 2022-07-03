@@ -124,7 +124,6 @@ TEST(Vector3Test, Length)
 {
 	const Vector3 a{ 1.0f, 2.0f, 3.0f };
 	const Vector3 b{ 2.5f, 3, 1.5f };
-	const Vector3 c{ Vector3::cross(a, b) };
 
 	const float expected{ std::sqrt(14.0f) };
 	const float actual1{ a.length() };
